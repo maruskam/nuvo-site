@@ -372,15 +372,35 @@ button.secondary:hover { background: var(--violet-line); }
     return false;
   }
 
+  // Oltre questa lunghezza il mailto: viene troncato da qualche client
+  // (e il testo perso non torna): meglio dirottare sulla copia.
+  var MAX_BODY = 1500;
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (missing()) return;
-    var subject = 'Bug Nuvo · ' + val('area');
+
+    var body = compose();
+    if (body.length > MAX_BODY) {
+      say('La segnalazione è lunga: alcuni programmi di posta la taglierebbero. ' +
+          'Usa «Copia il testo» qui accanto e incollala in una email nuova.', true);
+      return;
+    }
+
     var href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(compose());
+      '?subject=' + encodeURIComponent('Bug Nuvo · ' + val('area')) +
+      '&body=' + encodeURIComponent(body);
     window.location.href = href;
     say('Email pronta nel tuo programma di posta. Allega gli screenshot prima di inviarla.');
+
+    // Se non c'è un client di posta configurato il browser non apre nulla e
+    // non segnala l'errore: dopo qualche secondo offriamo l'altra strada.
+    window.setTimeout(function () {
+      if (!document.hidden) {
+        say('Non si è aperto niente? Non hai un programma di posta configurato: ' +
+            'usa «Copia il testo» e incolla la segnalazione nella tua webmail.', true);
+      }
+    }, 2500);
   });
 
   document.getElementById('copy').addEventListener('click', function () {
