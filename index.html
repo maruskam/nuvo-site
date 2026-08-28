@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuvo</title>
+<meta name="description" content="Nuvo annota le spese di casa a voce o dalla foto di uno scontrino. Senza account, senza server, senza AI. Gratis, per iPhone e Android.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* FONTS-LOCAL-START */
+/* Baloo 2 e Nunito serviti dal nostro dominio: nessuna richiesta a Google,
+   quindi nessun indirizzo IP dei visitatori verso terzi e nessun banner da
+   mettere. Sono gli stessi file variabili impacchettati nell'app
+   (assets/fonts/), licenza SIL OFL 1.1 — copia in fonts/. */
+@font-face {
+  font-family: 'Baloo 2';
+  src: url('fonts/Baloo2-latin.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/Nunito-latin.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* FONTS-LOCAL-END */
+/* ─────────────────────────────────────────────────────────────
+   Token dell'app (lib/design/tokens.dart) — unica fonte di verità
+   per i colori. Il mock del telefono resta chiaro in entrambi i
+   temi: è una schermata dell'app, non un elemento di pagina.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --violet: #5B44E0;
+  --violet-ink: #3A2AA8;
+  --violet-soft: #EDE9FA;
+  --violet-line: #E3DEF7;
+  --ink: #141024;
+  --ink-72: rgba(20, 16, 36, .72);
+  --ink-58: rgba(20, 16, 36, .58);
+  --ink-42: rgba(20, 16, 36, .42);
+  --ground: #F4F2FC;
+  --surface: #ffffff;
+  --surface-2: #FBFAFE;
+  --green: #1E6B47;
+  --green-soft: #E4F1E7;
+  --ochre: #8A550F;
+  --ochre-soft: #F5E8D1;
+  --peach: #FFB4A2;
+  --paper: #FBF8F1;
+  --cloud-body: #ffffff;
+  --cloud-line: #141024;
+  --on-accent: #ffffff;
+  --shadow-card: 0 10px 30px rgba(20, 16, 36, .07);
+  --shadow-float: 0 26px 64px rgba(20, 16, 36, .16);
+  --radius-lg: 28px;
+  --radius: 22px;
+  --radius-sm: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --violet: #A99BF8;
+    --violet-ink: #C6BCFB;
+    --violet-soft: #241D42;
+    --violet-line: #302853;
+    --ink: #F1EFFB;
+    --ink-72: rgba(241, 239, 251, .74);
+    --ink-58: rgba(241, 239, 251, .6);
+    --ink-42: rgba(241, 239, 251, .44);
+    --ground: #100D1E;
+    --surface: #191430;
+    --surface-2: #1E1838;
+    --green: #92D6AF;
+    --green-soft: #16301F;
+    --ochre: #E7C179;
+    --ochre-soft: #33280F;
+    --paper: #241E33;
+    --cloud-body: #F1EFFB;
+    --cloud-line: #241E33;
+    --on-accent: #16112B;
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, .4);
+    --shadow-float: 0 26px 64px rgba(0, 0, 0, .55);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --violet: #A99BF8;
+  --violet-ink: #C6BCFB;
+  --violet-soft: #241D42;
+  --violet-line: #302853;
+  --ink: #F1EFFB;
+  --ink-72: rgba(241, 239, 251, .74);
+  --ink-58: rgba(241, 239, 251, .6);
+  --ink-42: rgba(241, 239, 251, .44);
+  --ground: #100D1E;
+  --surface: #191430;
+  --surface-2: #1E1838;
+  --green: #92D6AF;
+  --green-soft: #16301F;
+  --ochre: #E7C179;
+  --ochre-soft: #33280F;
+  --paper: #241E33;
+  --cloud-body: #F1EFFB;
+  --cloud-line: #241E33;
+  --on-accent: #16112B;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, .4);
+  --shadow-float: 0 26px 64px rgba(0, 0, 0, .55);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 600 16px/1.6 Nunito, system-ui, -apple-system, sans-serif;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+section { padding: clamp(52px, 8vw, 84px) 0; }
+[id] { scroll-margin-top: 92px; }
+h1, h2, h3, .display { font-family: 'Baloo 2', Nunito, system-ui, sans-serif; font-weight: 800; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(34px, 6.2vw, 58px); line-height: 1.06; }
+h2 { font-size: clamp(27px, 4.2vw, 38px); line-height: 1.15; }
+h3 { font-size: clamp(18px, 2.4vw, 21px); line-height: 1.25; }
+p { margin: 0; }
+a { color: var(--violet); text-decoration: none; }
+a:hover { color: var(--violet-ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+.lede { font-size: clamp(16px, 1.9vw, 17.5px); line-height: 1.55; color: var(--ink-72); max-width: 52ch; text-wrap: pretty; }
+.eyebrow { font: 800 11.5px/1 Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); }
+.eyebrow.green { color: var(--green); }
+.body-sm { font-size: 14.5px; line-height: 1.55; color: var(--ink-72); }
+.meta { font: 700 12.5px/1.5 Nunito, sans-serif; color: var(--ink-58); }
+
+/* header */
+header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 18px; padding-bottom: 18px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); }
+.brand span { font: 800 21px 'Baloo 2', Nunito, sans-serif; }
+nav ul { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 26px); list-style: none; margin: 0; padding: 0; font: 700 13.5px Nunito, sans-serif; }
+nav a { color: var(--ink-72); }
+nav a:hover { color: var(--violet); }
+@media (max-width: 720px) { nav { display: none; } }
+
+/* pulsanti */
+.btn { display: inline-flex; align-items: center; gap: 10px; border: 0; border-radius: var(--radius-sm); padding: 13px 20px; font: 800 15px 'Baloo 2', Nunito, sans-serif; cursor: pointer; }
+.btn-primary { background: var(--violet); color: var(--on-accent); }
+.btn-primary:hover { background: var(--violet-ink); color: var(--on-accent); }
+.btn-ghost { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+.btn-ghost:hover { color: var(--violet); }
+.pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: var(--violet-soft); color: var(--violet); padding: 7px 14px; font: 800 11.5px Nunito, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+.pill.beta { background: var(--green-soft); color: var(--green); }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: clamp(32px, 6vw, 64px); align-items: center; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .phone-col { margin: 8px auto 0; } }
+.hero h1 { margin-top: 16px; }
+.hero .lede { margin-top: 18px; }
+.cta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+.trust { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.trust .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-42); }
+
+/* mock: sempre in chiaro, è l'app vera */
+.phone-col { position: relative; width: 330px; max-width: 100%; }
+.phone {
+  --p-ink: #141024; --p-ink-50: rgba(20,16,36,.5); --p-ink-45: rgba(20,16,36,.45);
+  border-radius: 44px; background: #fff; box-shadow: var(--shadow-float);
+  padding: 22px 18px; display: flex; flex-direction: column; gap: 12px; color: var(--p-ink);
+}
+.phone-top { display: flex; align-items: flex-end; justify-content: space-between; }
+.phone-avatar { width: 34px; height: 34px; border-radius: 50%; background: #FFE9E2; display: grid; place-items: center; font: 800 13px Nunito, sans-serif; color: #B85C3E; }
+.phone-card { border-radius: var(--radius); background: #F4F2FC; padding: 15px; }
+.ring-row { display: flex; align-items: center; gap: 14px; }
+.ring { position: relative; width: 78px; height: 78px; flex: none; }
+.ring > div { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.mood { border-radius: 20px; background: #E4F1E7; padding: 11px 13px; display: flex; align-items: center; gap: 10px; font: 600 11.5px/1.4 Nunito, sans-serif; }
+.budget-row { display: flex; gap: 8px; }
+.budget-card { flex: 1; border-radius: 18px; background: #F4F2FC; padding: 11px; }
+.chip { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; font: 800 10px Nunito, sans-serif; }
+.track { margin-top: 7px; height: 6px; border-radius: 4px; background: #E3DEF7; }
+.track > i { display: block; height: 100%; border-radius: 4px; }
+.list { border-radius: 20px; background: #F4F2FC; padding: 4px 13px; }
+.list-row { padding: 9px 0; display: flex; align-items: center; gap: 9px; }
+.list-row + .list-row { border-top: 1px solid #E3DEF7; }
+.badge-float { position: absolute; left: -22px; bottom: -20px; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-float); padding: 11px 14px; display: flex; align-items: center; gap: 9px; }
+@media (max-width: 900px) {
+  /* Sotto il mock invece che sopra: sovrapposto coprirebbe l'ultima riga. */
+  .badge-float { position: static; margin: 14px auto 0; width: max-content; }
+}
+.mic { width: 32px; height: 32px; border-radius: 50%; background: var(--violet); display: grid; place-items: center; flex: none; }
+.float-anim { animation: nv-float 4s ease-in-out infinite; }
+@keyframes nv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@media (prefers-reduced-motion: reduce) { .float-anim { animation: none; } }
+
+/* blocchi */
+.panel { background: var(--surface); }
+.cards { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.card { border-radius: var(--radius-lg); background: var(--surface-2); padding: 26px; border: 1px solid var(--violet-line); }
+.card-head { display: flex; align-items: center; gap: 12px; }
+.icon { width: 44px; height: 44px; border-radius: 15px; display: grid; place-items: center; flex: none; background: var(--violet); }
+.icon.ink { background: var(--ink); }
+.icon.green { background: var(--green); }
+.say { border-radius: 999px; background: var(--surface); border: 1px solid var(--violet-line); padding: 10px 15px; font: 700 13.5px Nunito, sans-serif; }
+.receipt { margin-top: 18px; border-radius: var(--radius-sm); background: var(--paper); border: 1px solid var(--violet-line); padding: 16px; }
+.receipt-row { display: flex; justify-content: space-between; }
+.steps { margin-top: 22px; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.step { display: flex; align-items: flex-start; gap: 12px; }
+.step .num { width: 26px; height: 26px; border-radius: 50%; background: var(--violet-soft); color: var(--violet); display: grid; place-items: center; font: 800 12px Nunito, sans-serif; flex: none; }
+.step b { color: var(--ink); font-weight: 800; }
+
+/* funzioni */
+.grid-features { margin-top: 38px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.feature { border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-card); padding: 20px; display: flex; flex-direction: column; gap: 7px; }
+.feature h3 { font-size: 17px; }
+.feature p { font-size: 13.5px; line-height: 1.5; color: var(--ink-72); }
+.tag { align-self: flex-start; border-radius: 999px; padding: 4px 10px; font: 800 10.5px Nunito, sans-serif; letter-spacing: .08em; text-transform: uppercase; background: var(--violet-soft); color: var(--violet); }
+
+/* privacy */
+.privacy-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: clamp(28px, 5vw, 56px); align-items: start; }
+@media (max-width: 900px) { .privacy-grid { grid-template-columns: minmax(0, 1fr); } }
+.quote { margin-top: 26px; display: flex; align-items: center; gap: 14px; border-radius: var(--radius); background: var(--green-soft); padding: 16px 18px; font: 600 14px/1.5 Nunito, sans-serif; }
+.facts { display: flex; flex-direction: column; gap: 10px; }
+.fact { border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-card); padding: 17px 20px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.fact b { font: 800 15px 'Baloo 2', Nunito, sans-serif; flex: 1; min-width: 130px; }
+.fact span { font: 600 13px Nunito, sans-serif; color: var(--ink-58); }
+
+/* costi */
+.costs { background: var(--ink); color: var(--ground); }
+.costs .eyebrow { color: var(--violet); }
+.costs-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: clamp(28px, 5vw, 56px); align-items: center; }
+@media (max-width: 900px) { .costs-grid { grid-template-columns: minmax(0, 1fr); } }
+.costs .lede { color: rgba(244, 242, 252, .74); max-width: 56ch; }
+.tip-card { border-radius: var(--radius-lg); background: var(--ground); color: var(--ink); padding: 26px; text-align: center; }
+.tip-card .note { margin-top: 4px; font: 600 13px/1.5 Nunito, sans-serif; color: var(--ink-58); }
+.tip-cta { margin-top: 18px; border-radius: var(--radius-sm); background: var(--violet); padding: 14px; font: 800 15px 'Baloo 2', Nunito, sans-serif; color: var(--on-accent); }
+
+/* domande */
+.faq { margin-top: 30px; display: grid; gap: 18px 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.faq h3 { font-size: 16.5px; }
+.faq p { margin-top: 6px; font-size: 13.5px; line-height: 1.55; color: var(--ink-72); }
+
+/* chiusura */
+.closing { background: var(--violet-soft); }
+.closing .wrap { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+footer { padding: 30px 0 46px; }
+footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px 26px; flex-wrap: wrap; font: 600 12.5px Nunito, sans-serif; color: var(--ink-58); }
+footer nav { display: block; }
+footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="40" height="36" viewBox="0 0 58 52" aria-hidden="true">
+        <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="var(--cloud-body)" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linejoin="round"></path>
+        <path d="M20 28q3 -4.5 6 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+        <path d="M32 28q3 -4.5 6 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+        <path d="M24 33q5 5 10 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.2" stroke-linecap="round"></path>
+        <circle cx="17" cy="32" r="2.8" fill="var(--peach)"></circle>
+        <circle cx="41" cy="32" r="2.8" fill="var(--peach)"></circle>
+      </svg>
+      <span>Nuvo</span>
+    </a>
+    <nav aria-label="Sezioni">
+      <ul>
+        <li><a href="#come-funziona">Come funziona</a></li>
+        <li><a href="#funzioni">Funzioni</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#costi">Quanto costa</a></li>
+        <li><a href="#domande">Domande</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="pill">Spese di casa</span>
+      <h1>Una spesa si annota<br>in due secondi.</h1>
+      <p class="lede">Lo dici a voce — «Coop venti euro» — o fotografi lo scontrino. Nuvo propone importo, categoria e data; tu confermi con un tocco. Nessun modulo da compilare.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#beta">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7.5 11l4.5 4.5L16.5 11"></path><path d="M5 19.5h14"></path></svg>
+          Prova la beta
+        </a>
+        <a class="btn btn-ghost" href="#domande">Come funziona</a>
+      </div>
+      <div class="trust meta">
+        <span>Senza account</span><span class="dot"></span>
+        <span>Funziona offline</span><span class="dot"></span>
+        <span>Niente AI</span><span class="dot"></span>
+        <span>Gratis</span>
+      </div>
+    </div>
+
+    <div class="phone-col">
+      <div class="phone" role="img" aria-label="La schermata principale di Nuvo: credito del mese 680 euro su 1.200, budget Spesa e Casa, e le ultime due spese registrate.">
+        <div class="phone-top">
+          <div>
+            <div style="font:600 11.5px Nunito,sans-serif;color:var(--p-ink-50)">Buonasera, Marco</div>
+            <div style="font:800 22px 'Baloo 2',Nunito,sans-serif">Agosto</div>
+          </div>
+          <div class="phone-avatar">M</div>
+        </div>
+        <div class="phone-card ring-row">
+          <div class="ring">
+            <svg width="78" height="78" viewBox="0 0 104 104" aria-hidden="true">
+              <circle cx="52" cy="52" r="44" fill="none" stroke="#E3DEF7" stroke-width="11"></circle>
+              <circle cx="52" cy="52" r="44" fill="none" stroke="#5B44E0" stroke-width="11" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="119" transform="rotate(-90 52 52)"></circle>
+            </svg>
+            <div>
+              <div style="font:800 18px 'Baloo 2',Nunito,sans-serif;line-height:1">57%</div>
+              <div style="font:600 9px Nunito,sans-serif;color:var(--p-ink-45)">residuo</div>
+            </div>
+          </div>
+          <div>
+            <div style="font:600 11px Nunito,sans-serif;color:var(--p-ink-50)">Credito del mese</div>
+            <div style="font:800 25px 'Baloo 2',Nunito,sans-serif;color:#5B44E0;line-height:1.2">680,00 €</div>
+            <div style="font:600 10.5px Nunito,sans-serif;color:var(--p-ink-50)">1.200,00 € · 13 giorni</div>
+          </div>
+        </div>
+        <div class="mood">
+          <svg class="float-anim" width="44" height="40" viewBox="0 0 58 52" style="flex:none" aria-hidden="true">
+            <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="#fff" stroke="#141024" stroke-width="2.6" stroke-linejoin="round"></path>
+            <path d="M20 28q3 -4.5 6 0" fill="none" stroke="#141024" stroke-width="2.6" stroke-linecap="round"></path>
+            <path d="M32 28q3 -4.5 6 0" fill="none" stroke="#141024" stroke-width="2.6" stroke-linecap="round"></path>
+            <path d="M24 33q5 5 10 0" fill="none" stroke="#141024" stroke-width="2.2" stroke-linecap="round"></path>
+            <circle cx="17" cy="32" r="2.8" fill="#FFB4A2"></circle>
+            <circle cx="41" cy="32" r="2.8" fill="#FFB4A2"></circle>
+          </svg>
+          <span>Sei in linea con il mese: hai ancora 680,00 €.</span>
+        </div>
+        <div class="budget-row">
+          <div class="budget-card">
+            <div class="chip" style="background:#E4F1E7;color:#1E6B47">SP</div>
+            <div style="margin-top:7px;font:800 11.5px Nunito,sans-serif">Spesa</div>
+            <div style="font:600 10px Nunito,sans-serif;color:var(--p-ink-50)">62,00 € rimasti</div>
+            <div class="track"><i style="width:79%;background:#1E6B47"></i></div>
+          </div>
+          <div class="budget-card">
+            <div class="chip" style="background:#F5E8D1;color:#8A550F">CA</div>
+            <div style="margin-top:7px;font:800 11.5px Nunito,sans-serif">Casa</div>
+            <div style="font:600 10px Nunito,sans-serif;color:var(--p-ink-50)">282,00 € rimasti</div>
+            <div class="track"><i style="width:30%;background:#8A550F"></i></div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="list-row">
+            <div class="chip" style="width:28px;height:28px;border-radius:10px;background:#E4F1E7;color:#1E6B47">SP</div>
+            <div style="flex:1">
+              <div style="font:700 11.5px Nunito,sans-serif">Coop</div>
+              <div style="font:600 9.5px Nunito,sans-serif;color:var(--p-ink-45)">Spesa · voce · ora</div>
+            </div>
+            <div style="font:800 12.5px 'Baloo 2',Nunito,sans-serif">20,00 €</div>
+          </div>
+          <div class="list-row">
+            <div class="chip" style="width:28px;height:28px;border-radius:10px;background:#EDE9FA;color:#5B44E0">AB</div>
+            <div style="flex:1">
+              <div style="font:700 11.5px Nunito,sans-serif">Amazon Prime</div>
+              <div style="font:600 9.5px Nunito,sans-serif;color:var(--p-ink-45)">Abbonamenti · ogni mese</div>
+            </div>
+            <div style="font:800 12.5px 'Baloo 2',Nunito,sans-serif">9,90 €</div>
+          </div>
+        </div>
+      </div>
+      <div class="badge-float">
+        <div class="mic">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0"></path><path d="M12 17.5V21"></path></svg>
+        </div>
+        <div>
+          <div style="font:800 13px 'Baloo 2',Nunito,sans-serif">«Coop venti euro»</div>
+          <div style="font:600 10px Nunito,sans-serif;color:var(--ink-58)">registrata in 2 secondi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="come-funziona">
+  <div class="wrap">
+    <p class="eyebrow">Tre modi di annotare</p>
+    <h2>Parla, inquadra, o scrivi.</h2>
+    <div class="cards" style="margin-top:38px">
+      <div class="card">
+        <div class="card-head">
+          <div class="icon">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0"></path><path d="M12 17.5V21"></path></svg>
+          </div>
+          <h3>A voce</h3>
+        </div>
+        <p class="body-sm" style="margin-top:14px">Dici dove e quanto, anche in una frase normale. Nuvo riconosce i numeri scritti e detti, le date («ieri», «sabato scorso») e le ricorrenti («9,90 al mese»). Una spesa per frase: quando l'hai confermata, ne detti un'altra.</p>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px">
+          <div class="say">«Coop ventidue euro»</div>
+          <div class="say">«Farmacia 18 e 50»</div>
+          <div class="say">«Netflix 12,90 al mese»</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="icon ink">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5h4l1.5-2.5h7L17 8.5h4v11H3z"></path><circle cx="12" cy="14" r="3.2"></circle></svg>
+          </div>
+          <h3>Con una foto</h3>
+        </div>
+        <p class="body-sm" style="margin-top:14px">Scontrini, ma anche bollette e fatture: Nuvo capisce che tipo di documento è e cerca il totale dove sta davvero, saltando subtotali, IVA, contante e resto. Il testo lo legge il lettore del telefono, sul dispositivo.</p>
+        <div class="receipt">
+          <div style="font:800 12px Nunito,sans-serif;letter-spacing:.12em">COOP CENTRO</div>
+          <div style="margin-top:9px;display:flex;flex-direction:column;gap:4px;font:600 11.5px Nunito,sans-serif;color:var(--ink-58)">
+            <div class="receipt-row"><span>Pane 500g</span><span>1,80</span></div>
+            <div class="receipt-row"><span>Latte intero x2</span><span>2,40</span></div>
+            <div class="receipt-row"><span>Detersivo</span><span>6,85</span></div>
+            <div class="receipt-row"><span>Verdura mista</span><span>8,95</span></div>
+          </div>
+          <div style="margin-top:9px;border-top:1px dashed var(--ink-42);padding-top:8px;display:flex;justify-content:space-between;font:800 14px Nunito,sans-serif"><span>TOTALE</span><span>20,00</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div class="icon green">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16z"></path><path d="M14.5 5.5l4 4"></path></svg>
+          </div>
+          <h3>A mano</h3>
+        </div>
+        <p class="body-sm" style="margin-top:14px">Il ripiego che c'è sempre: importo, cosa, categoria e data, anche retrodatata. È la stessa schermata di conferma degli altri due modi — quindi non c'è niente di nuovo da imparare.</p>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px">
+          <div class="say">Valuta diversa dalla tua</div>
+          <div class="say">Data di ieri o del mese scorso</div>
+          <div class="say">Spesa ricorrente con una spunta</div>
+        </div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><p class="body-sm"><b>Dici, inquadri o scrivi.</b> Un gesto, dalla schermata principale — o tenendo premuta l'icona dell'app.</p></div>
+      <div class="step"><div class="num">2</div><p class="body-sm"><b>Nuvo propone.</b> Importo, categoria, data e se è una spesa fissa. Quello di cui non è sicura te lo segnala.</p></div>
+      <div class="step"><div class="num">3</div><p class="body-sm"><b>Confermi tu.</b> L'ultima parola è sempre tua: niente si salva da solo, e ogni correzione le insegna qualcosa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="funzioni">
+  <div class="wrap">
+    <p class="eyebrow">Tutto il resto</p>
+    <h2>Un bilancio che si tiene<br>da sé.</h2>
+    <div class="grid-features">
+      <div class="feature">
+        <span class="tag">Credito</span>
+        <h3>Il mese in un anello</h3>
+        <p>Dici quanto puoi spendere e l'anello mostra quanto resta. La nuvoletta cambia umore quando il credito si assottiglia.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Budget</span>
+        <h3>Tetti per categoria</h3>
+        <p>Un limite mensile per ogni categoria che ti serve. Ti avviso all'80% e quando è finito, senza aspettare la fine del mese.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Ricorrenti</span>
+        <h3>Le fisse si segnano da sole</h3>
+        <p>«Abbonamento Prime 9,90 al mese» crea la spesa e la regola. Se non apri l'app per settimane, al ritorno recupera gli arretrati senza duplicati.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Analisi</span>
+        <h3>Mese per mese</h3>
+        <p>Dove sono finiti i soldi, con il confronto sul mese precedente. I mesi chiusi restano come erano: alzare un tetto oggi non riscrive agosto.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Valute</span>
+        <h3>Spese in valuta estera</h3>
+        <p>Registri in sterline e vedi il controvalore. Il cambio si congela sulla spesa, così i mesi passati non cambiano valore quando cambia il mercato.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Promemoria</span>
+        <h3>Avvisi al momento giusto</h3>
+        <p>L'addebito di oggi, il budget quasi finito, il mese appena chiuso. Sono notifiche locali, decise dal telefono: nessun server che le manda.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Sicurezza</span>
+        <h3>Chiusa a chiave</h3>
+        <p>Se vuoi, Nuvo si apre solo con Face ID o l'impronta. I dati restano dove sono: sul telefono.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">I tuoi dati</span>
+        <h3>Backup e CSV, tuoi</h3>
+        <p>Un file con spese, foto e impostazioni da conservare dove vuoi, e l'export CSV per aprire tutto in un foglio di calcolo.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Scorciatoie</span>
+        <h3>Widget e azioni rapide</h3>
+        <p>Il residuo del mese sulla schermata di casa, e «Detta una spesa» o «Fotografa scontrino» tenendo premuta l'icona.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Lingue</span>
+        <h3>Italiano e inglese</h3>
+        <p>Interfaccia, dettatura, valuta e formato dei numeri si scelgono separatamente: puoi dettare in italiano e tenere i totali in euro con interfaccia inglese.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="privacy">
+  <div class="wrap privacy-grid">
+    <div>
+      <p class="eyebrow green">Privacy</p>
+      <h2>I tuoi soldi restano<br>affare tuo.</h2>
+      <p class="lede" style="margin-top:16px">Nuvo non usa intelligenza artificiale, in nessuna funzione: la voce la trascrive il riconoscimento vocale del telefono — e quando il modello della tua lingua è installato, l'audio non esce dal dispositivo — a dare senso alle parole ci pensano regole scritte a mano, e gli scontrini li legge il lettore di testo di sistema. Le spese vivono in un database sul tuo telefono: non c'è un server dove finiscono.</p>
+      <div class="quote">
+        <svg width="52" height="47" viewBox="0 0 58 52" style="flex:none" aria-hidden="true">
+          <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="var(--cloud-body)" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linejoin="round"></path>
+          <path d="M19.5 28q3.5 -5 7 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+          <path d="M32 29h6" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+          <path d="M23 33q6 6.5 12 0" fill="var(--cloud-line)" stroke="var(--cloud-line)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <circle cx="17" cy="32" r="2.8" fill="var(--peach)"></circle>
+          <circle cx="41" cy="32" r="2.8" fill="var(--peach)"></circle>
+        </svg>
+        <span>«L'unica cosa che scarico sono i tassi di cambio della Banca Centrale Europea.»</span>
+      </div>
+      <p style="margin-top:22px"><a href="privacy.html" style="font-weight:800">Leggi l'informativa completa →</a></p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Niente server</b><span>le spese non lasciano il telefono</span></div>
+      <div class="fact"><b>Niente account</b><span>apri e usi, senza registrarti</span></div>
+      <div class="fact"><b>Niente pubblicità</b><span>e nessun dato in vendita</span></div>
+      <div class="fact"><b>Niente statistiche</b><span>nessun tracciamento, nessun analytics</span></div>
+      <div class="fact"><b>Funziona offline</b><span>in aereo, in cantina, in vacanza</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="costs" id="costi">
+  <div class="wrap costs-grid">
+    <div>
+      <p class="eyebrow">Quanto costa</p>
+      <h2>Niente. Se vuoi, offrimi un caffè.</h2>
+      <p class="lede">Senza server e senza AI, far funzionare Nuvo non costa quasi nulla: per questo è gratis, senza abbonamenti né funzioni bloccate. Gli store e la manutenzione però un piccolo costo ce l'hanno. Se ti è utile, una mancia la tiene in vita.</p>
+    </div>
+    <div class="tip-card">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto" aria-hidden="true"><path d="M4.5 8.5h11.5v5.5a4.5 4.5 0 0 1-4.5 4.5H9a4.5 4.5 0 0 1-4.5-4.5V8.5z"></path><path d="M16 9.8h1.9a2.3 2.3 0 0 1 0 4.6H16"></path><path d="M7.2 5.6c.7-.8 1.4-.8 2.1 0M12 5.2c.7-.8 1.4-.8 2.1 0"></path><path d="M5 21h11"></path></svg>
+      <h3 style="margin-top:12px">Quanto ti senti</h3>
+      <p class="note">Una volta, non ogni mese. Dentro l'app, quando ti va — e non sblocca nulla, perché non c'è niente da sbloccare.</p>
+      <div class="tip-cta">Offrimi un caffè</div>
+    </div>
+  </div>
+</section>
+
+<section id="domande">
+  <div class="wrap">
+    <h2>Domande</h2>
+    <div class="faq">
+      <div>
+        <h3>Se sbaglia la categoria?</h3>
+        <p>La correggi nella conferma. Nuvo si ricorda la correzione e la volta dopo classifica quella spesa a modo tuo.</p>
+      </div>
+      <div>
+        <h3>Devo parlare in un modo preciso?</h3>
+        <p>Basta dove (o cosa) e quanto, anche dentro una frase normale: «oggi dal dentista ho speso 350 euro». Una spesa per frase, però: due spese insieme è ambiguo anche per una persona.</p>
+      </div>
+      <div>
+        <h3>Posso decidere io i tetti di spesa?</h3>
+        <p>Sì: crei le categorie che vuoi, con nome, colore e tetto mensile, e li cambi quando serve. Le categorie che non usi più si archiviano, così lo storico conserva i nomi.</p>
+      </div>
+      <div>
+        <h3>Ci sono funzioni a pagamento?</h3>
+        <p>No. Tutto quello che c'è nell'app è incluso; la mancia è solo un modo di dire grazie.</p>
+      </div>
+      <div>
+        <h3>Serve internet?</h3>
+        <p>No, tranne che per i tassi di cambio: servono solo se registri spese in una valuta diversa dalla tua o se cambi la valuta di base. Tutto il resto funziona in aereo.</p>
+      </div>
+      <div>
+        <h3>E se cambio telefono?</h3>
+        <p>Salvi un backup dal profilo — spese, foto e impostazioni in un file — e lo ripristini sul telefono nuovo. Senza account, il passaggio lo fai tu: nessuno tiene una copia al posto tuo.</p>
+      </div>
+      <div>
+        <h3>La dettatura ascolta sempre?</h3>
+        <p>No: il microfono si accende quando tocchi la nuvoletta e si spegne appena hai finito. Il permesso lo chiedo la prima volta che detti davvero, non all'avvio.</p>
+      </div>
+      <div>
+        <h3>Su quali telefoni funziona?</h3>
+        <p>iPhone e Android, dalla stessa base di codice. In questo momento è in beta chiusa su TestFlight: l'arrivo sugli store è il passo dopo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="beta">
+  <div class="wrap">
+    <div>
+      <p class="display" style="font-size:clamp(24px,3.4vw,30px)">Prova a dire «Coop venti euro».</p>
+      <p class="meta" style="margin-top:6px">Nuvo è in beta su TestFlight. Scrivimi e ti mando l'invito.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="mailto:nuvo.app.it@gmail.com?subject=Beta%20di%20Nuvo">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M4 7l8 6 8-6"></path></svg>
+        Chiedi l'invito
+      </a>
+      <a class="btn btn-ghost" href="privacy.html">Informativa privacy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <svg width="26" height="24" viewBox="0 0 58 52" aria-hidden="true">
+        <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="var(--cloud-body)" stroke="var(--cloud-line)" stroke-width="3" stroke-linejoin="round"></path>
+      </svg>
+      <span>Nuvo · spese di casa</span>
+    </div>
+    <nav aria-label="Link di chiusura">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#domande">Domande</a></li>
+        <li><a href="#costi">Sostieni l'app</a></li>
+        <li><a href="mailto:nuvo.app.it@gmail.com">Scrivimi</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

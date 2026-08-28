@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy di Nuvo</title>
+<meta name="description" content="Informativa privacy di Nuvo: quali dati restano sul telefono, quali permessi servono e perché, e le uniche connessioni di rete che l'app apre.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* FONTS-LOCAL-START */
+/* Baloo 2 e Nunito serviti dal nostro dominio: nessuna richiesta a Google,
+   quindi nessun indirizzo IP dei visitatori verso terzi e nessun banner da
+   mettere. Sono gli stessi file variabili impacchettati nell'app
+   (assets/fonts/), licenza SIL OFL 1.1 — copia in fonts/. */
+@font-face {
+  font-family: 'Baloo 2';
+  src: url('fonts/Baloo2-latin.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/Nunito-latin.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+/* FONTS-LOCAL-END */
+:root {
+  color-scheme: light;
+  --violet: #5B44E0; --violet-ink: #3A2AA8; --violet-soft: #EDE9FA; --violet-line: #E3DEF7;
+  --ink: #141024; --ink-72: rgba(20,16,36,.72); --ink-58: rgba(20,16,36,.58); --ink-42: rgba(20,16,36,.42);
+  --ground: #F4F2FC; --surface: #ffffff; --surface-2: #FBFAFE;
+  --green: #1E6B47; --green-soft: #E4F1E7; --peach: #FFB4A2;
+  --cloud-body: #ffffff; --cloud-line: #141024;
+  --shadow-card: 0 10px 30px rgba(20,16,36,.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --violet: #A99BF8; --violet-ink: #C6BCFB; --violet-soft: #241D42; --violet-line: #302853;
+    --ink: #F1EFFB; --ink-72: rgba(241,239,251,.74); --ink-58: rgba(241,239,251,.6); --ink-42: rgba(241,239,251,.44);
+    --ground: #100D1E; --surface: #191430; --surface-2: #1E1838;
+    --green: #92D6AF; --green-soft: #16301F;
+    --cloud-body: #F1EFFB; --cloud-line: #241E33;
+    --shadow-card: 0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --violet: #A99BF8; --violet-ink: #C6BCFB; --violet-soft: #241D42; --violet-line: #302853;
+  --ink: #F1EFFB; --ink-72: rgba(241,239,251,.74); --ink-58: rgba(241,239,251,.6); --ink-42: rgba(241,239,251,.44);
+  --ground: #100D1E; --surface: #191430; --surface-2: #1E1838;
+  --green: #92D6AF; --green-soft: #16301F;
+  --cloud-body: #F1EFFB; --cloud-line: #241E33;
+  --shadow-card: 0 10px 30px rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 600 16px/1.65 Nunito, system-ui, -apple-system, sans-serif; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+h1, h2, h3 { font-family: 'Baloo 2', Nunito, system-ui, sans-serif; font-weight: 800; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 5.4vw, 44px); line-height: 1.08; }
+h2 { font-size: clamp(20px, 2.8vw, 24px); line-height: 1.2; margin-top: 44px; }
+h3 { font-size: 17px; margin-top: 26px; }
+p { margin: 12px 0 0; color: var(--ink-72); max-width: 66ch; text-wrap: pretty; }
+ul { margin: 12px 0 0; padding-left: 22px; color: var(--ink-72); max-width: 66ch; }
+li + li { margin-top: 7px; }
+a { color: var(--violet); }
+a:hover { color: var(--violet-ink); }
+a:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+strong { color: var(--ink); font-weight: 800; }
+
+header { border-bottom: 1px solid var(--violet-line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 18px; padding-bottom: 18px; max-width: 1120px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand span { font: 800 21px 'Baloo 2', Nunito, sans-serif; }
+.back { font: 700 13.5px Nunito, sans-serif; }
+
+.hero { padding: clamp(40px, 6vw, 64px) 0 8px; }
+.meta { margin-top: 14px; font: 700 13px Nunito, sans-serif; color: var(--ink-58); }
+.summary { margin-top: 30px; border-radius: 26px; background: var(--green-soft); padding: clamp(20px, 3vw, 26px); }
+.summary h2 { margin-top: 0; font-size: 19px; color: var(--ink); }
+.summary ul { color: var(--ink); }
+.summary li { font-size: 15px; }
+
+main { padding-bottom: clamp(48px, 7vw, 80px); }
+.callout { margin-top: 16px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-card); padding: 18px 20px; }
+.callout p:first-child { margin-top: 0; }
+.fill { background: var(--violet-soft); color: var(--violet-ink); border-radius: 6px; padding: 1px 7px; font-weight: 800; }
+.table-scroll { margin-top: 16px; overflow-x: auto; border-radius: 20px; box-shadow: var(--shadow-card); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14.5px; }
+th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--violet-line); vertical-align: top; }
+th { font: 800 12px Nunito, sans-serif; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-58); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 800; color: var(--ink); white-space: nowrap; }
+footer { border-top: 1px solid var(--violet-line); padding: 26px 0 46px; }
+footer .wrap { max-width: 1120px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; font: 600 12.5px Nunito, sans-serif; color: var(--ink-58); }
+footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="40" height="36" viewBox="0 0 58 52" aria-hidden="true">
+        <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="var(--cloud-body)" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linejoin="round"></path>
+        <path d="M20 28q3 -4.5 6 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+        <path d="M32 28q3 -4.5 6 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.6" stroke-linecap="round"></path>
+        <path d="M24 33q5 5 10 0" fill="none" stroke="var(--cloud-line)" stroke-width="2.2" stroke-linecap="round"></path>
+        <circle cx="17" cy="32" r="2.8" fill="var(--peach)"></circle>
+        <circle cx="41" cy="32" r="2.8" fill="var(--peach)"></circle>
+      </svg>
+      <span>Nuvo</span>
+    </a>
+    <a class="back" href="index.html">← Torna al sito</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Informativa privacy</h1>
+    <p class="meta">Ultimo aggiornamento: 28 agosto 2026 · Versione dell'app: 1.0.0 · Vale per Nuvo su iOS e Android</p>
+
+    <div class="summary">
+      <h2>In breve</h2>
+      <ul>
+        <li>Nuvo <strong>non raccoglie dati personali</strong>: chi la sviluppa non vede le tue spese, e non esiste un server dove finiscano.</li>
+        <li>Le spese, le foto degli scontrini e le impostazioni stanno in un <strong>database sul tuo telefono</strong>, nell'area riservata all'app.</li>
+        <li><strong>Non serve un account</strong> e non c'è alcuna registrazione.</li>
+        <li>Niente pubblicità, niente statistiche d'uso, niente profilazione, nessun dato ceduto o venduto a terzi.</li>
+        <li>L'unica connessione che Nuvo apre da sé è quella per i <strong>tassi di cambio</strong>, e non trasmette nulla di tuo.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <h2>1. Chi è il titolare del trattamento</h2>
+    <p>Nuvo è sviluppata e pubblicata da <span class="fill">[nome e cognome o ragione sociale del titolare]</span>, <span class="fill">[indirizzo]</span>, contattabile all'indirizzo <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>.</p>
+    <p>Poiché l'app non trasmette dati a chi la sviluppa, il titolare tratta dati personali solo nel caso in cui tu scelga di scrivergli (vedi il punto 9).</p>
+
+    <h2>2. Che cosa resta sul tuo telefono</h2>
+    <p>Tutto quello che inserisci in Nuvo vive esclusivamente sul dispositivo, nell'area riservata all'app:</p>
+    <ul>
+      <li>le <strong>spese</strong>: importo, valuta, esercente o descrizione, categoria, data, note di ricorrenza;</li>
+      <li>le <strong>foto</strong> di scontrini, bollette e fatture che scegli di allegare a una spesa;</li>
+      <li>le tue <strong>impostazioni</strong>: nome con cui l'app ti chiama, credito mensile, budget per categoria, lingua, valuta, formato dei numeri, promemoria attivi;</li>
+      <li>ciò che l'app <strong>impara dalle tue correzioni</strong> (l'associazione fra un esercente e una categoria), che resta un dato locale come gli altri;</li>
+      <li>una <strong>copia dei tassi di cambio</strong> già scaricati, per funzionare offline.</li>
+    </ul>
+    <p>Nessuna di queste informazioni viene inviata a chi sviluppa l'app né a terzi. Non esiste una copia sul cloud gestita da Nuvo: l'unica copia è la tua.</p>
+
+    <h2>3. Che cosa Nuvo non fa</h2>
+    <ul>
+      <li>Non richiede né crea <strong>account</strong>, e non chiede email, numero di telefono o dati di pagamento.</li>
+      <li>Non usa strumenti di <strong>analytics</strong>, statistiche d'uso o crash reporting di terze parti.</li>
+      <li>Non mostra <strong>pubblicità</strong> e non contiene SDK pubblicitari o di tracciamento; non accede all'identificativo pubblicitario del dispositivo.</li>
+      <li>Non fa <strong>profilazione</strong> né decisioni automatizzate su di te.</li>
+      <li>Non <strong>cede, condivide o vende</strong> dati a nessuno.</li>
+      <li>Non usa <strong>intelligenza artificiale</strong> in nessuna funzione: quello che dici e le foto che scatti non vengono inviati a un modello in cloud.</li>
+    </ul>
+    <p>Nel linguaggio delle etichette privacy di Apple e Google, questo corrisponde a «nessun dato raccolto» e a nessun tracciamento.</p>
+
+    <h2>4. I permessi che Nuvo chiede</h2>
+    <p>Ogni permesso viene richiesto la prima volta che usi davvero la funzione, non all'avvio, ed è sempre rifiutabile: l'app continua a funzionare con i modi di inserimento che restano.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Permesso</th><th scope="col">A cosa serve</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Microfono</td><td>Ascoltare la spesa che detti, solo mentre la dettatura è attiva. Il microfono si accende quando tocchi la nuvoletta e si spegne appena hai finito.</td></tr>
+          <tr><td>Riconoscimento vocale</td><td>Trasformare in testo quello che hai detto, usando il riconoscimento vocale del sistema operativo (vedi il punto 5).</td></tr>
+          <tr><td>Fotocamera</td><td>Fotografare uno scontrino, una bolletta o una fattura per leggerne il totale.</td></tr>
+          <tr><td>Libreria foto</td><td>Scegliere un documento già presente nel rullino, al posto di scattarlo ora.</td></tr>
+          <tr><td>Face ID / impronta</td><td>Sbloccare l'app, solo se attivi la protezione dal profilo. L'impronta o il volto non sono mai visibili all'app: il confronto lo fa il sistema.</td></tr>
+          <tr><td>Notifiche</td><td>Mandarti i promemoria che hai attivato (addebito di oggi, budget quasi finito, mese chiuso). Sono notifiche locali, generate dal telefono.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>5. Dettatura e lettura degli scontrini</h2>
+    <p><strong>La voce.</strong> La trascrizione la fa il riconoscimento vocale del sistema operativo, e Nuvo chiede sempre la modalità <em>sul dispositivo</em>: quando il modello della tua lingua è installato sul telefono, l'audio non esce dal dispositivo. Se quel modello non è disponibile, il riconoscimento di sistema può ripiegare sull'elaborazione sui server di Apple o Google, secondo le impostazioni e le informative del produttore del telefono (<a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple</a>, <a href="https://policies.google.com/privacy" rel="noopener">Google</a>). In quel caso Nuvo riceve solo il testo trascritto: la registrazione non viene conservata né dall'app né dal titolare. Se preferisci evitarlo del tutto, scarica il modello della tua lingua dalle impostazioni del telefono oppure usa la foto o l'inserimento a mano.</p>
+    <p><strong>Le foto.</strong> Il testo dei documenti viene letto dal riconoscimento testo di sistema — Vision su iPhone, ML Kit su Android — che lavora <strong>sul dispositivo</strong>, anche in aereo. Le immagini restano nell'area riservata all'app, legate alla spesa, e vengono eliminate quando elimini la spesa o l'app.</p>
+    <p>A dare un senso alle parole (importo, esercente, categoria, data, ricorrenza) ci pensano regole scritte dentro l'app, che girano offline.</p>
+
+    <h2>6. Le connessioni di rete</h2>
+    <p>Nuvo apre di sua iniziativa una sola connessione: i <strong>tassi di cambio</strong> della Banca Centrale Europea, richiesti al servizio pubblico <a href="https://frankfurter.app" rel="noopener">Frankfurter</a> (<code>api.frankfurter.app</code>), senza chiave e senza account.</p>
+    <div class="callout">
+      <p>La richiesta contiene solo una data e i codici delle valute che ti interessano. Non contiene i tuoi importi, le tue spese né identificativi del dispositivo. Come in qualsiasi chiamata web, l'indirizzo IP è tecnicamente visibile al fornitore del servizio: è l'unico dato indirettamente riferibile a te che lascia il telefono, e serve solo a consegnare la risposta.</p>
+    </div>
+    <p>Se usi una sola valuta e non cambi la valuta di base, l'app funziona senza mai aprire una connessione.</p>
+
+    <h2>7. Mance e acquisti in-app</h2>
+    <p>Nuvo è gratuita e non ha funzioni a pagamento. Dal profilo puoi lasciare una <strong>mancia una tantum</strong>: il pagamento è gestito interamente da App Store o Google Play, che ti addebitano con i dati già presenti sul tuo account. Chi sviluppa l'app <strong>non vede</strong> né riceve numeri di carta, indirizzi o altri dati di pagamento: dagli store arrivano solo rendiconti aggregati delle vendite. Le mance sono acquisti consumabili: non sbloccano nulla e non si trasferiscono ad altri dispositivi.</p>
+
+    <h2>8. Backup, export e beta</h2>
+    <p><strong>Backup ed export.</strong> Dal profilo puoi creare un file di backup (spese, foto e impostazioni) o esportare le spese in CSV. Il file esce dall'app solo dove lo mandi tu: se lo salvi su iCloud, Google Drive o lo mandi per email, da quel momento vale l'informativa del servizio che hai scelto. Il file non è cifrato: conservalo dove conservi i documenti che ti riguardano.</p>
+    <p><strong>Beta su TestFlight.</strong> Se provi Nuvo come tester, l'iscrizione e l'invio dei feedback passano da Apple: Apple tratta il tuo indirizzo email, gli screenshot e i commenti che invii, oltre ai dati diagnostici previsti dalle sue impostazioni, e li rende visibili allo sviluppatore. Vale l'<a href="https://www.apple.com/legal/privacy/data/it/testflight/" rel="noopener">informativa TestFlight di Apple</a>. Se mi scrivi un feedback via email, vale il punto seguente.</p>
+
+    <h2>9. Se mi scrivi</h2>
+    <p>Quando scrivi a <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>, il titolare tratta l'indirizzo email e il contenuto del messaggio (compresi eventuali screenshot che allegi) al solo scopo di risponderti e correggere il problema segnalato. La base giuridica è l'interesse legittimo a fornire assistenza su un'app gratuita, ai sensi dell'art. 6.1.f del Regolamento (UE) 2016/679. I messaggi vengono conservati per il tempo necessario a gestire la richiesta e comunque non oltre 24 mesi; la casella è ospitata su Gmail (Google Ireland Ltd.), che agisce come fornitore del servizio di posta.</p>
+    <p>Non uso i tuoi contatti per newsletter o comunicazioni commerciali.</p>
+
+    <h2>10. I tuoi diritti</h2>
+    <p>Sui dati che stanno nel telefono i comandi li hai già in mano, senza dover chiedere niente a nessuno: puoi modificare o eliminare ogni singola spesa, esportare tutto in CSV o in un file di backup — è il diritto di portabilità, in pratica — e cancellare l'intero archivio disinstallando l'app. Nessuno conserva una copia dopo di te.</p>
+    <p>Per i dati del punto 9 (le email che mi mandi) puoi esercitare i diritti previsti dagli articoli 15-22 del GDPR — accesso, rettifica, cancellazione, limitazione, opposizione, portabilità — scrivendo allo stesso indirizzo. Hai inoltre diritto di proporre reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+
+    <h2>11. Minori</h2>
+    <p>Nuvo non è pensata per essere usata da bambini e non raccoglie dati da nessuno, quindi non tratta dati di minori. Se un minore usa l'app sul proprio dispositivo, i dati inseriti restano su quel dispositivo sotto il controllo di chi ne ha la responsabilità.</p>
+
+    <h2>12. Modifiche a questa informativa</h2>
+    <p>Se una versione futura dell'app introdurrà funzioni che cambiano il quadro descritto qui — per esempio una sincronizzazione fra dispositivi — questa pagina verrà aggiornata prima del rilascio, con la nuova data in alto, e la novità sarà spiegata dentro l'app. Nessuna funzione che invii i tuoi dati altrove verrà attivata senza dirtelo.</p>
+
+    <h2>13. Contatti</h2>
+    <p>Per qualsiasi domanda su questa informativa: <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <svg width="26" height="24" viewBox="0 0 58 52" aria-hidden="true">
+        <path d="M14 40c-6 0-10-4-10-9s4-9 9-9c1-7 7-12 14-12s13 5 14 12c5 0 12 3 12 10s-6 8-11 8H14z" fill="var(--cloud-body)" stroke="var(--cloud-line)" stroke-width="3" stroke-linejoin="round"></path>
+      </svg>
+      <span>Nuvo · spese di casa</span>
+    </div>
+    <nav aria-label="Link di chiusura">
+      <ul>
+        <li><a href="index.html">Sito</a></li>
+        <li><a href="index.html#domande">Domande</a></li>
+        <li><a href="mailto:nuvo.app.it@gmail.com">Scrivimi</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
