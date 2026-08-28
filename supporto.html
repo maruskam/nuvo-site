@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Assistenza Nuvo</title>
-<meta name="description" content="Assistenza di Nuvo: modulo per segnalare un problema, soluzioni ai casi più comuni e indirizzo per scrivere liberamente.">
+<meta name="description" content="Assistenza di Nuvo: le domande frequenti e l'indirizzo a cui scriverci se la risposta non c'è.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
 /* FONTS-LOCAL-START */
@@ -43,7 +43,7 @@
     --ink: #F1EFFB; --ink-72: rgba(241,239,251,.74); --ink-58: rgba(241,239,251,.6); --ink-42: rgba(241,239,251,.44);
     --ground: #100D1E; --surface: #191430; --surface-2: #1E1838;
     --green: #92D6AF; --green-soft: #16301F;
-    --cloud-body: #F1EFFB; --cloud-line: #241E33; --on-accent: #16112B; --on-accent: #16112B;
+    --cloud-body: #F1EFFB; --cloud-line: #241E33;
     --shadow-card: 0 10px 30px rgba(0,0,0,.4);
   }
 }
@@ -53,7 +53,7 @@
   --ink: #F1EFFB; --ink-72: rgba(241,239,251,.74); --ink-58: rgba(241,239,251,.6); --ink-42: rgba(241,239,251,.44);
   --ground: #100D1E; --surface: #191430; --surface-2: #1E1838;
   --green: #92D6AF; --green-soft: #16301F;
-  --cloud-body: #F1EFFB; --cloud-line: #241E33; --on-accent: #16112B;
+  --cloud-body: #F1EFFB; --cloud-line: #241E33;
   --shadow-card: 0 10px 30px rgba(0,0,0,.4);
 }
 
@@ -99,46 +99,55 @@ footer { border-top: 1px solid var(--violet-line); padding: 26px 0 46px; }
 footer .wrap { max-width: 1120px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; font: 600 12.5px Nunito, sans-serif; color: var(--ink-58); }
 footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 
-/* ── nome del prodotto nel testo corrente ── */
+/* il nome del prodotto nel testo corrente */
 .nuvo { color: var(--violet); font-weight: 800; }
 
-/* ── modulo di segnalazione ── */
-form { margin-top: 20px; display: flex; flex-direction: column; gap: 20px; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field > label { font: 800 14px 'Baloo 2', Nunito, sans-serif; color: var(--ink); }
-.hint { font: 600 13px/1.45 Nunito, sans-serif; color: var(--ink-58); max-width: 62ch; }
-input, select, textarea {
-  font: 600 15px/1.5 Nunito, system-ui, sans-serif;
+
+/* schede delle categorie */
+.cards {
+  margin-top: 26px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 22px;
+  background: var(--violet-soft);
+  padding: 20px 22px;
+  text-decoration: none;
   color: var(--ink);
-  background: var(--surface);
-  border: 1.5px solid var(--violet-line);
-  border-radius: 14px;
-  padding: 12px 14px;
-  width: 100%;
-  max-width: 100%;
 }
-textarea { min-height: 96px; resize: vertical; }
-input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px var(--violet-soft);
+.card:hover { background: var(--violet-line); color: var(--ink); }
+.card .txt { flex: 1; min-width: 0; }
+.card b { display: block; font: 800 17px 'Baloo 2', Nunito, sans-serif; }
+.card span { display: block; margin-top: 3px; font: 600 13.5px/1.45 Nunito, sans-serif; color: var(--ink-58); }
+.card svg { flex: none; }
+h2[id] { scroll-margin-top: 24px; }
+
+/* riquadro dei contatti */
+.contact {
+  margin-top: 40px;
+  border-radius: 26px;
+  background: var(--ink);
+  color: var(--ground);
+  padding: clamp(26px, 5vw, 40px);
+  text-align: center;
 }
-input::placeholder, textarea::placeholder { color: var(--ink-42); }
-select { appearance: none; background-image: none; }
-.req { color: var(--violet); font-weight: 800; }
-.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-button {
-  font: 800 15px 'Baloo 2', Nunito, sans-serif;
-  border: 0; border-radius: 14px; padding: 13px 20px; cursor: pointer;
+.contact h2 { margin: 0; color: var(--ground); }
+.contact p { margin: 14px auto 0; color: rgba(244, 242, 252, .78); max-width: 46ch; }
+:root:not([data-theme="light"]) .contact p { color: rgba(20, 16, 36, .74); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .contact p { color: rgba(244, 242, 252, .78); } }
+.contact .mail {
+  display: inline-block;
+  margin-top: 18px;
+  font: 800 clamp(17px, 3.4vw, 21px) 'Baloo 2', Nunito, sans-serif;
+  color: var(--violet);
+  word-break: break-word;
 }
-button.primary { background: var(--violet); color: var(--on-accent); }
-button.primary:hover { background: var(--violet-ink); }
-button.secondary { background: var(--violet-soft); color: var(--violet-ink); }
-button.secondary:hover { background: var(--violet-line); }
-.feedback { font: 700 13.5px Nunito, sans-serif; color: var(--green); }
-.feedback.error { color: #B23A48; }
-:root:not([data-theme="light"]) .feedback.error { color: #F2A7B0; }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .feedback.error { color: #B23A48; } }
-.aside { margin-top: 18px; border-radius: 20px; background: var(--violet-soft); padding: 18px 20px; }
-.aside p:first-child { margin-top: 0; }
+.contact .small { font-size: 14px; }
 </style>
 </head>
 <body>
@@ -162,13 +171,34 @@ button.secondary:hover { background: var(--violet-line); }
 
 <div class="hero">
   <div class="wrap">
-    <h1>Assistenza</h1>
-    <p class="meta">Nuvo 1.0.0 · iOS e Android · Rispondiamo entro due giorni lavorativi</p>
+    <h1>Come possiamo aiutarti?</h1>
+    <p class="meta">Nuvo 1.0.0 · iOS e Android</p>
 
-    <div class="summary">
-      <h2>Due strade</h2>
-      <p style="color:var(--ink)"><strong>Hai trovato un problema?</strong> Usa il modulo qui sotto: serve a segnalare i bug e chiede una per una le informazioni che servono per riprodurre il difetto.</p>
-      <p style="color:var(--ink)"><strong>Vuoi proporre una funzione, o chiedere una cosa qualsiasi?</strong> Scrivi direttamente a <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>, senza modulo.</p>
+    <div class="cards">
+      <a class="card" href="#voce">
+        <div class="txt"><b>Voce e dettatura</b><span>Come si detta una spesa, e cosa fare se non sente</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
+      <a class="card" href="#foto">
+        <div class="txt"><b>Scontrini e bollette</b><span>Come inquadrare, e perché a volte prende il totale sbagliato</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
+      <a class="card" href="#soldi">
+        <div class="txt"><b>Credito, budget e ricorrenti</b><span>Tetti mensili, avvisi e spese che si registrano da sole</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
+      <a class="card" href="#dati">
+        <div class="txt"><b>Dati e backup</b><span>Cambio telefono, export CSV, cancellare tutto</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
+      <a class="card" href="#avvisi">
+        <div class="txt"><b>Promemoria e sicurezza</b><span>Notifiche che non arrivano e blocco con Face ID</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
+      <a class="card" href="#beta">
+        <div class="txt"><b>Beta su TestFlight</b><span>Come provare Nuvo prima che arrivi sull'App Store</span></div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+      </a>
     </div>
   </div>
 </div>
@@ -176,264 +206,80 @@ button.secondary:hover { background: var(--violet-line); }
 <main>
   <div class="wrap">
 
-    <h2 id="segnala">Segnala un problema</h2>
-    <p>Compila i campi e il pulsante prepara l'email già scritta, con l'indirizzo e l'oggetto al posto giusto: la invii dal tuo programma di posta, così resti tu a decidere cosa parte. Niente di quello che scrivi qui viene inviato aprendo la pagina.</p>
-
-    <form id="bug" novalidate>
-      <div class="field">
-        <label for="area">Dove succede <span class="req">*</span></label>
-        <p class="hint">Serve a capire subito quale parte di <span class="nuvo">Nuvo</span> guardare.</p>
-        <select id="area" name="area" required>
-          <option value="Dettatura">Dettatura a voce</option>
-          <option value="Foto di scontrini, bollette o fatture">Foto di scontrini, bollette o fatture</option>
-          <option value="Importi, valute o cambi">Importi, valute o cambi</option>
-          <option value="Credito e budget">Credito e budget</option>
-          <option value="Spese ricorrenti">Spese ricorrenti</option>
-          <option value="Analisi mensile">Analisi mensile</option>
-          <option value="Promemoria">Promemoria e notifiche</option>
-          <option value="Backup, ripristino o export CSV">Backup, ripristino o export CSV</option>
-          <option value="Blocco con Face ID o impronta">Blocco con Face ID o impronta</option>
-          <option value="Widget e azioni rapide">Widget e azioni rapide</option>
-          <option value="Avvio dell'app o crash">Avvio dell'app o crash</option>
-          <option value="Altro">Altro</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="what">Cosa è successo <span class="req">*</span></label>
-        <p class="hint">Racconta il fatto, non la causa: «ho dettato una spesa e l'importo salvato era 2,50 invece di 25».</p>
-        <textarea id="what" name="what" required placeholder="Cosa hai visto"></textarea>
-      </div>
-
-      <div class="field">
-        <label for="expected">Cosa ti aspettavi</label>
-        <p class="hint">Ovvio per te, non per noi: scriverlo evita di sistemare la cosa sbagliata.</p>
-        <textarea id="expected" name="expected" placeholder="Cosa avrebbe dovuto fare"></textarea>
-      </div>
-
-      <div class="field">
-        <label for="steps">Come si ripete</label>
-        <p class="hint">I passi in ordine, uno per riga. Un difetto che sappiamo riprodurre è un difetto quasi risolto.</p>
-        <textarea id="steps" name="steps" placeholder="1. Apro l'app&#10;2. Tocco il microfono&#10;3. Dico «Coop 22 euro»"></textarea>
-      </div>
-
-      <div class="field">
-        <label for="input">La frase dettata, o che documento hai fotografato</label>
-        <p class="hint">Se il problema riguarda voce o foto, questo è il campo più utile di tutti: la frase <strong>esatta</strong>, parola per parola, oppure il tipo di documento (scontrino della spesa, bolletta della luce, fattura del dentista).</p>
-        <input id="input" name="input" type="text" placeholder="«oggi dal dentista ho speso 350 euro»">
-      </div>
-
-      <div class="field">
-        <label for="device">Telefono e sistema</label>
-        <p class="hint">Modello e versione: <em>iPhone 14 Pro, iOS 18.6</em> oppure <em>Pixel 8, Android 15</em>. Molti difetti vivono su un modello solo.</p>
-        <input id="device" name="device" type="text" placeholder="iPhone 14 Pro · iOS 18.6">
-      </div>
-
-      <div class="field">
-        <label for="version">Versione di Nuvo</label>
-        <p class="hint">In <strong>Impostazioni → Licenze open source</strong> è scritta in cima. Se stai provando la beta, TestFlight la mostra accanto al nome dell'app, con il numero di build fra parentesi.</p>
-        <input id="version" name="version" type="text" placeholder="1.0.0 (8)">
-      </div>
-
-      <div class="field">
-        <label for="lang">Lingua e valuta impostate</label>
-        <p class="hint">Contano più di quanto sembri: numeri e date cambiano forma con la lingua, e i cambi entrano in gioco con la valuta.</p>
-        <input id="lang" name="lang" type="text" placeholder="Italiano · EUR">
-      </div>
-
-      <div class="field">
-        <label for="email">La tua email</label>
-        <p class="hint">Serve solo a risponderti. Se scrivi dal tuo programma di posta la vediamo già dal mittente: lascialo vuoto se preferisci.</p>
-        <input id="email" name="email" type="email" placeholder="tu@esempio.it" autocomplete="email">
-      </div>
-
-      <div class="aside">
-        <p><strong>Gli screenshot aiutano molto.</strong> Il modulo non può allegarli: aggiungili all'email prima di inviarla. Se il difetto riguarda la lettura di un documento, la foto dello scontrino vale più di qualsiasi descrizione.</p>
-      </div>
-
-      <div class="actions">
-        <button type="submit" class="primary">Prepara l'email</button>
-        <button type="button" class="secondary" id="copy">Copia il testo</button>
-        <span class="feedback" id="feedback" role="status" aria-live="polite"></span>
-      </div>
-    </form>
-
-    <noscript>
-      <div class="aside">
-        <p>Il modulo ha bisogno di JavaScript per comporre l'email. Scrivi direttamente a <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a> indicando: dove succede, cosa è successo, cosa ti aspettavi, come si ripete, la frase dettata, telefono e sistema, versione di Nuvo, lingua e valuta.</p>
-      </div>
-    </noscript>
-
-    <h2>Proposte e nuove funzioni</h2>
-    <p>Per un'idea non serve il modulo: <a href="mailto:nuvo.app.it@gmail.com?subject=Proposta%20per%20Nuvo">scrivici a nuvo.app.it@gmail.com</a> e raccontaci cosa vorresti fare con <span class="nuvo">Nuvo</span>.</p>
-    <p>Ci interessa il gesto che hai in mente più della soluzione tecnica: sapere <em>cosa</em> volevi ottenere ci lascia lo spazio per trovare la strada migliore, che a volte è più semplice di quella che immaginavamo. Leggiamo tutte le proposte, anche quelle a cui rispondiamo che per ora non se ne fa niente.</p>
-
-    <h2>Prima di scrivere: le cose che si risolvono da sole</h2>
+    <h2 id="voce">Voce e dettatura</h2>
 
     <h3>La dettatura non parte o non sente</h3>
-    <p><span class="nuvo">Nuvo</span> ha bisogno di due permessi, microfono e riconoscimento vocale. Se li hai negati, il telefono non li richiede una seconda volta: vanno riattivati a mano da <strong>Impostazioni del telefono → Nuvo</strong>.</p>
-    <p>Controlla poi che il modello della tua lingua sia installato — su iPhone in Impostazioni → Generali → Tastiera → Dettatura, su Android nelle impostazioni vocali di Google. Quando c'è, la trascrizione funziona anche senza rete ed è più rapida.</p>
-    <p>In ogni caso resta sempre disponibile <strong>Inserisci a mano</strong>, che non chiede permessi.</p>
+    <p><span class="nuvo">Nuvo</span> ha bisogno di due permessi, microfono e riconoscimento vocale. Se li hai negati, il telefono non li richiede una seconda volta: riattivali da <strong>Impostazioni del telefono → Nuvo</strong>.</p>
+    <p>Controlla poi che il modello della tua lingua sia installato — su iPhone in Impostazioni → Generali → Tastiera → Dettatura. Quando c'è, la trascrizione funziona anche senza rete.</p>
 
-    <h3>Capisce la spesa, ma sbaglia importo o categoria</h3>
-    <p>Correggi il campo sbagliato nella schermata di conferma prima di salvare: da quella correzione <span class="nuvo">Nuvo</span> impara come classifichi tu quel negozio, e la volta dopo ci arriva da sé.</p>
-    <p>Aiuta molto dire <strong>cosa</strong> e <strong>quanto</strong>: «Coop 22 euro», «benzina 40 euro», «dentista 350 euro», «palestra 39 euro al mese». È da quella parola che <span class="nuvo">Nuvo</span> capisce la categoria, e funziona anche dentro una frase intera: «oggi ho fatto la spesa alla Coop e ho speso 22 euro».</p>
-    <p>Detta <strong>una spesa per frase</strong>. Due spese insieme sono ambigue anche per una persona, quindi <span class="nuvo">Nuvo</span> non ci prova: conferma la prima e ridetta.</p>
+    <h3>Sbaglia l'importo o la categoria</h3>
+    <p>Correggi il campo nella schermata di conferma prima di salvare: da quella correzione <span class="nuvo">Nuvo</span> impara come classifichi tu quel negozio.</p>
+    <p>Aiuta dire <strong>cosa</strong> e <strong>quanto</strong>: «Coop 22 euro», «benzina 40 euro», «dentista 350 euro». Funziona anche dentro una frase intera: «oggi ho fatto la spesa alla Coop e ho speso 22 euro».</p>
 
-    <h3>Legge male lo scontrino</h3>
-    <p>Inquadra il documento intero e ben illuminato, appoggiato su una superficie piatta: la riga che conta è quella del totale.</p>
-    <p><span class="nuvo">Nuvo</span> riconosce anche bollette e fatture, dove il totale non è in fondo ma in un riquadro, e scarta di proposito subtotali, IVA, contante e resto. Se prende comunque il numero sbagliato, mandaci la foto con il modulo: quei casi ci servono per migliorare la lettura.</p>
+    <h3>Posso dettare due spese insieme?</h3>
+    <p>No, una per frase. Due spese nella stessa frase sono ambigue anche per una persona: conferma la prima e ridetta.</p>
 
-    <h3>I promemoria non arrivano</h3>
-    <p>Servono due interruttori: il permesso alle notifiche a livello di sistema e la voce <strong>Promemoria</strong> nelle impostazioni di <span class="nuvo">Nuvo</span>.</p>
-    <p>Sono avvisi generati dal telefono, non da un server: se il telefono è spento o l'app è stata disinstallata, non arrivano e non si recuperano.</p>
+    <h2 id="foto">Scontrini e bollette</h2>
 
-    <h3>Il blocco con Face ID o impronta non funziona</h3>
-    <p><span class="nuvo">Nuvo</span> può usare solo un blocco biometrico già configurato nel telefono. Se il sistema non ne ha uno, l'opzione resta spenta e te lo dice: attiva Face ID, Touch ID o l'impronta nelle impostazioni del telefono e riprova.</p>
+    <h3>Legge male il totale</h3>
+    <p>Inquadra il documento intero e ben illuminato, appoggiato su una superficie piatta: la riga che conta è quella del totale. <span class="nuvo">Nuvo</span> scarta di proposito subtotali, IVA, contante e resto. Se prende comunque il numero sbagliato, mandaci la foto.</p>
 
-    <h3>Ho cambiato telefono, o voglio spostare i dati</h3>
-    <p>Dalle impostazioni: <strong>Salva un backup</strong> produce un file con spese, foto e impostazioni; sul telefono nuovo scegli <strong>Ripristina da backup</strong> e indicagli quel file.</p>
-    <p>Non c'è un cloud che lo faccia al posto tuo, ed è la conseguenza diretta del fatto che i dati non lasciano il dispositivo: la copia è tua, quindi il passaggio lo fai tu.</p>
-    <p>Se ti serve solo leggere i numeri altrove, <strong>Esporta le spese (CSV)</strong> apre tutto in un foglio di calcolo.</p>
+    <h3>Funziona anche con bollette e fatture?</h3>
+    <p>Sì. <span class="nuvo">Nuvo</span> riconosce di che documento si tratta e cerca il totale dove sta davvero, che in una bolletta non è in fondo ma in un riquadro.</p>
+
+    <h2 id="soldi">Credito, budget e ricorrenti</h2>
+
+    <h3>Come funziona il credito del mese</h3>
+    <p>Dici quanto puoi spendere e l'anello mostra quanto resta. Lo cambi quando vuoi dalle impostazioni: il mese in corso si aggiorna, i mesi chiusi restano come erano.</p>
+
+    <h3>Quando arrivano gli avvisi sul budget</h3>
+    <p>Al superamento dell'80% del tetto di una categoria e quando il tetto è finito, senza aspettare la fine del mese.</p>
+
+    <h3>Le spese fisse si registrano da sole?</h3>
+    <p>Sì: «abbonamento palestra 39 euro al mese» crea la spesa e la regola. Se non apri l'app per settimane, al ritorno recupera gli arretrati senza creare doppioni. Una spesa che cancelli a mano non ricompare.</p>
+
+    <h2 id="dati">Dati e backup</h2>
+
+    <h3>Ho cambiato telefono</h3>
+    <p>Dalle impostazioni, <strong>Salva un backup</strong>: un file con spese, foto e impostazioni. Sul telefono nuovo scegli <strong>Ripristina da backup</strong> e indicagli quel file.</p>
+
+    <h3>C'è la sincronizzazione fra due telefoni?</h3>
+    <p>No, e non c'è un account. I dati vivono su un dispositivo alla volta e si spostano con il backup. Se perdi il telefono senza backup quelle spese non si recuperano: è l'altra faccia del fatto che nessuno può leggerle.</p>
+
+    <h3>Posso portare le spese in un foglio di calcolo?</h3>
+    <p>Sì, <strong>Esporta le spese (CSV)</strong> nelle impostazioni.</p>
 
     <h3>Voglio cancellare tutto</h3>
-    <p><strong>Parti da zero</strong> nelle impostazioni svuota l'archivio e ti riporta all'inizio.</p>
-    <p>Disinstallare l'app elimina database e foto insieme all'app: non resta nulla, né sul telefono né altrove, perché altrove non c'è mai stato niente.</p>
+    <p><strong>Parti da zero</strong> nelle impostazioni svuota l'archivio. Disinstallare l'app elimina database e foto: non resta nulla, né sul telefono né altrove.</p>
 
-    <h2>Cosa Nuvo non fa (per evitarti una domanda)</h2>
-    <ul>
-      <li><strong>Non c'è un account</strong>, quindi non esistono password da recuperare né sessioni da chiudere.</li>
-      <li><strong>Non c'è sincronizzazione</strong> tra due telefoni, né tra telefono e computer: i dati vivono su un dispositivo alla volta e si spostano con il backup.</li>
-      <li><strong>Non c'è un server remoto</strong> con una copia dei tuoi dati: se perdi il telefono senza backup, quelle spese non si recuperano. È il prezzo dell'altra metà della promessa — nessuno può leggerle.</li>
-      <li><strong>Non c'è un collegamento alla banca</strong>: le spese le racconti tu, <span class="nuvo">Nuvo</span> non legge conti né carte.</li>
-    </ul>
+    <h2 id="avvisi">Promemoria e sicurezza</h2>
 
-    <h2>Se stai provando la beta</h2>
-    <p><span class="nuvo">Nuvo</span> è in prova su TestFlight prima di arrivare sull'App Store. Da lì il modo più rapido di segnalare qualcosa è scuotere il telefono o fare uno screenshot, poi <strong>Invia feedback</strong>: arrivano immagine e dettagli del dispositivo insieme al messaggio.</p>
-    <p>Il modulo di questa pagina va bene lo stesso, e per i difetti più intricati è meglio: fa le domande giuste. Vuoi entrare nella beta? Scrivici e ti mandiamo l'invito.</p>
+    <h3>I promemoria non arrivano</h3>
+    <p>Servono due interruttori: il permesso alle notifiche nel telefono e la voce <strong>Promemoria</strong> nelle impostazioni di <span class="nuvo">Nuvo</span>. Sono avvisi generati dal telefono, non da un server: se il telefono è spento non arrivano e non si recuperano.</p>
+
+    <h3>Il blocco con Face ID non funziona</h3>
+    <p><span class="nuvo">Nuvo</span> può usare solo un blocco biometrico già configurato nel telefono. Attiva Face ID, Touch ID o l'impronta nelle impostazioni del telefono e riprova.</p>
+
+    <h2 id="beta">Beta su TestFlight</h2>
+
+    <h3>Come entro nella beta</h3>
+    <p>Scrivici e ti mandiamo l'invito: <span class="nuvo">Nuvo</span> è in prova su TestFlight prima di arrivare sull'App Store.</p>
+
+    <h3>Come segnalo qualcosa da TestFlight</h3>
+    <p>Scuoti il telefono o fai uno screenshot, poi <strong>Invia feedback</strong>: arrivano immagine e dettagli del dispositivo insieme al messaggio. Va bene anche l'email.</p>
+
+    <div class="contact">
+      <h2>Scrivici</h2>
+      <p>Ci dispiace che le domande frequenti non abbiano risposto alla tua. Mandaci un messaggio: leggiamo tutto e rispondiamo il prima possibile — di solito lo stesso giorno, al massimo entro due giorni lavorativi.</p>
+      <a class="mail" href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>
+      <p class="small">Per un problema, se puoi aggiungi telefono e versione del sistema, la versione di <span class="nuvo">Nuvo</span> (Impostazioni → Licenze open source), la frase esatta che hai dettato o la foto del documento. Per una proposta o una nuova funzione, raccontaci solo cosa vorresti fare.</p>
+    </div>
 
     <h2>Privacy</h2>
-    <p>Come vengono trattati i dati — cioè: non escono dal telefono — sta scritto nell'<a href="privacy.html">informativa privacy</a>. Se hai una domanda su quel documento, scrivici allo stesso indirizzo.</p>
-
-    <h2>Contatti</h2>
-    <p><a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a> · rispondiamo entro due giorni lavorativi, di solito lo stesso giorno.</p>
+    <p>Come vengono trattati i dati — cioè: non escono dal telefono — sta scritto nell'<a href="privacy.html">informativa privacy</a>.</p>
 
   </div>
 </main>
-
-<script>
-(function () {
-  var form = document.getElementById('bug');
-  var out = document.getElementById('feedback');
-  var TO = 'nuvo.app.it@gmail.com';
-
-  // Etichette nell'ordine in cui vanno lette da chi riceve la segnalazione,
-  // non nell'ordine in cui stanno nel modulo.
-  var FIELDS = [
-    ['area',     'Dove'],
-    ['what',     'Cosa è successo'],
-    ['expected', 'Cosa mi aspettavo'],
-    ['steps',    'Come si ripete'],
-    ['input',    'Frase dettata / documento'],
-    ['device',   'Telefono e sistema'],
-    ['version',  'Versione di Nuvo'],
-    ['lang',     'Lingua e valuta'],
-    ['email',    'Email per la risposta']
-  ];
-
-  function val(id) {
-    var el = document.getElementById(id);
-    return el && el.value ? el.value.trim() : '';
-  }
-
-  function compose() {
-    var lines = [];
-    FIELDS.forEach(function (f) {
-      var v = val(f[0]);
-      if (v) lines.push(f[1] + ':\n' + v);
-    });
-    return lines.join('\n\n');
-  }
-
-  function say(msg, isError) {
-    out.textContent = msg;
-    out.className = 'feedback' + (isError ? ' error' : '');
-  }
-
-  function missing() {
-    // Un difetto senza il racconto del fatto non è segnalabile: è l'unico
-    // campo che chiediamo davvero.
-    if (!val('what')) {
-      var el = document.getElementById('what');
-      el.focus();
-      say('Racconta cosa è successo: è l’unico campo indispensabile.', true);
-      return true;
-    }
-    return false;
-  }
-
-  // Oltre questa lunghezza il mailto: viene troncato da qualche client
-  // (e il testo perso non torna): meglio dirottare sulla copia.
-  var MAX_BODY = 1500;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (missing()) return;
-
-    var body = compose();
-    if (body.length > MAX_BODY) {
-      say('La segnalazione è lunga: alcuni programmi di posta la taglierebbero. ' +
-          'Usa «Copia il testo» qui accanto e incollala in una email nuova.', true);
-      return;
-    }
-
-    var href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent('Bug Nuvo · ' + val('area')) +
-      '&body=' + encodeURIComponent(body);
-    window.location.href = href;
-    say('Email pronta nel tuo programma di posta. Allega gli screenshot prima di inviarla.');
-
-    // Se non c'è un client di posta configurato il browser non apre nulla e
-    // non segnala l'errore: dopo qualche secondo offriamo l'altra strada.
-    window.setTimeout(function () {
-      if (!document.hidden) {
-        say('Non si è aperto niente? Non hai un programma di posta configurato: ' +
-            'usa «Copia il testo» e incolla la segnalazione nella tua webmail.', true);
-      }
-    }, 2500);
-  });
-
-  document.getElementById('copy').addEventListener('click', function () {
-    if (missing()) return;
-    var text = 'A: ' + TO + '\nOggetto: Bug Nuvo · ' + val('area') + '\n\n' + compose();
-    function fallback() {
-      // Clipboard non disponibile (contesto non sicuro, permesso negato):
-      // mostriamo il testo già selezionato, così basta un ⌘C. Meglio che
-      // lasciare l'utente a mani vuote con un messaggio di errore.
-      var box = document.getElementById('fallbackBox');
-      if (!box) {
-        box = document.createElement('textarea');
-        box.id = 'fallbackBox';
-        box.setAttribute('readonly', '');
-        box.setAttribute('aria-label', 'Testo della segnalazione da copiare');
-        box.style.minHeight = '220px';
-        form.appendChild(box);
-      }
-      box.value = text;
-      box.focus();
-      box.select();
-      say('Copia il testo qui sotto (⌘C oppure Ctrl+C) e incollalo in una email a ' + TO + '.');
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () {
-        say('Testo copiato: incollalo in una email a ' + TO + '.');
-      })['catch'](fallback);
-    } else {
-      fallback();
-    }
-  });
-})();
-</script>
 
 <footer>
   <div class="wrap">
