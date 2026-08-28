@@ -6,7 +6,8 @@ senza dipendenze: il repo è già la radice del sito da pubblicare.
 
 ```
 index.html          il sito
-privacy.html        l'informativa privacy (URL da dare ad App Store Connect)
+privacy.html        l'informativa privacy (campo «Privacy Policy URL»)
+supporto.html       la pagina di assistenza (campo «Support URL», obbligatorio)
 favicon.svg         icona della scheda
 robots.txt          indicizzazione libera
 _headers            cache dei font (usato da Cloudflare Pages, ignorato da GitHub Pages)
@@ -43,7 +44,8 @@ Poi: Settings → Pages → Source `Deploy from a branch`, branch `main`, cartel
 
 ```
 https://maruskam.github.io/nuvo-site/
-https://maruskam.github.io/nuvo-site/privacy.html   ← URL per App Store Connect
+https://maruskam.github.io/nuvo-site/privacy.html    ← Privacy Policy URL
+https://maruskam.github.io/nuvo-site/supporto.html   ← Support URL
 ```
 
 Gratis, HTTPS incluso, nessun dominio da comprare. Da qui in avanti ogni
@@ -94,3 +96,5 @@ server: basta sostituire il contenuto di `privacy.html` con
   «Chiedi l'invito» con i link ad App Store e Google Play, e aggiornare la
   risposta «Su quali telefoni funziona?».
 - `privacy.html`: aggiornare la data in alto a ogni modifica sostanziale.
+- `supporto.html`: se cambi l'indirizzo email, va aggiornato anche qui (tre punti)
+  oltre che nell'informativa.
