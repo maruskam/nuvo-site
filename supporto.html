@@ -134,6 +134,26 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
 
 h2[id] { scroll-margin-top: 24px; }
 
+
+/* ritagli dell'app a supporto delle spiegazioni */
+figure { margin: 18px 0 0; max-width: 420px; }
+figure img {
+  display: block; width: 100%; height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--violet-line);
+  box-shadow: var(--shadow-card);
+  background: var(--surface);
+}
+figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: var(--ink-58); }
+
+/* i due pulsanti della barra, ricreati a misura di riga di testo */
+.btn-inline {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--violet); vertical-align: -7px; margin: 0 3px;
+}
+.btn-inline.pale { background: var(--surface); border: 1.5px solid var(--violet-line); }
+
 /* riquadro dei contatti: il lilla tenue dell'app, non un fondo scuro */
 .contact {
   margin-top: 40px;
@@ -217,13 +237,21 @@ h2[id] { scroll-margin-top: 24px; }
     <h2 id="voce">Voce e dettatura</h2>
 
     <h3>Come detto una spesa</h3>
-    <p>Nella schermata principale, in basso al centro, c'è il pulsante col microfono: toccalo e parla. <span class="nuvo">Nuvo</span> ascolta, si ferma da sé dopo un paio di secondi di silenzio e ti mostra cosa ha capito.</p>
+    <p>Nella schermata principale, in basso al centro, c'è il pulsante col microfono <span class="btn-inline" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="2.5" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0"></path><path d="M12 17.5V21"></path></svg></span>: toccalo e parla. <span class="nuvo">Nuvo</span> ascolta, si ferma da sé dopo un paio di secondi di silenzio e ti mostra cosa ha capito.</p>
+    <figure>
+      <img src="img/barra.png" alt="La barra in basso della schermata principale, con il pulsante del microfono al centro e quello della fotocamera accanto">
+      <figcaption>La barra in basso: microfono per dettare, fotocamera per lo scontrino.</figcaption>
+    </figure>
     <p>Basta dire <strong>cosa</strong> e <strong>quanto</strong>: «Coop 22 euro», «benzina 40 euro», «dentista 350 euro». Funziona anche dentro una frase intera, come «oggi ho fatto la spesa alla Coop e ho speso 22 euro».</p>
 
     <h3>Il microfono non parte, o non sente niente</h3>
     <p>Per trascrivere, <span class="nuvo">Nuvo</span> ha bisogno di due permessi del telefono: microfono e riconoscimento vocale. Li chiede la prima volta che detti davvero. Se li hai negati il telefono non li richiede più, e vanno riattivati a mano: apri le <strong>Impostazioni del telefono</strong>, cerca <strong>Nuvo</strong> nell'elenco delle app e riaccendi le due voci.</p>
     <p>Se i permessi ci sono ma la trascrizione resta vuota, probabilmente manca il pacchetto vocale della tua lingua. Su iPhone si scarica da Impostazioni → Generali → Tastiera → Dettatura. Quando c'è, la trascrizione avviene sul telefono: è più rapida e funziona anche senza rete.</p>
     <p>Nel frattempo puoi sempre scrivere la spesa a mano: il collegamento <strong>Inserisci a mano</strong> è nella stessa schermata dove <span class="nuvo">Nuvo</span> ascolta.</p>
+    <figure>
+      <img src="img/dettatura.png" alt="La schermata di ascolto di Nuvo, con il pulsante «Ho finito» e i collegamenti per la foto e per l'inserimento a mano" loading="lazy">
+      <figcaption>Mentre ascolta: «Ho finito» chiude la dettatura, sotto ci sono la foto e l'inserimento a mano.</figcaption>
+    </figure>
 
     <h3>Ha capito la frase, ma l'importo o la categoria sono sbagliati</h3>
     <p>Prima di salvare qualsiasi cosa, <span class="nuvo">Nuvo</span> ti mostra una schermata di conferma con quattro campi: cosa, importo, categoria e data. Quelli di cui non è sicura sono segnalati. Correggi quello che non torna e poi conferma: niente viene salvato finché non lo fai tu.</p>
@@ -235,7 +263,7 @@ h2[id] { scroll-margin-top: 24px; }
     <h2 id="foto">Scontrini e bollette</h2>
 
     <h3>Come registro una spesa dalla foto</h3>
-    <p>Accanto al microfono, in basso, c'è il pulsante con la fotocamera: puoi scattare la foto del documento o scegliere una foto già nel rullino. <span class="nuvo">Nuvo</span> legge il testo, cerca il totale e apre la stessa schermata di conferma della dettatura, con l'importo già compilato.</p>
+    <p>Accanto al microfono, in basso, c'è il pulsante con la fotocamera <span class="btn-inline pale" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h4l1.5-2.5h7L17 8.5h4v11H3z"></path><circle cx="12" cy="14" r="3.2"></circle></svg></span>: puoi scattare la foto del documento o scegliere una foto già nel rullino. <span class="nuvo">Nuvo</span> legge il testo, cerca il totale e apre la stessa schermata di conferma della dettatura, con l'importo già compilato.</p>
     <p>La foto resta allegata alla spesa: la ritrovi aprendo la spesa dall'elenco, e viene eliminata insieme a lei.</p>
 
     <h3>Ha preso il numero sbagliato</h3>
@@ -251,10 +279,19 @@ h2[id] { scroll-margin-top: 24px; }
     <p>Il credito è la cifra che decidi di poter spendere in un mese: da lì <span class="nuvo">Nuvo</span> scala ogni spesa che registri. Non si detta, lo scrivi tu.</p>
     <p>Si apre da due punti: la card <strong>Credito del mese</strong> in cima alla schermata principale, oppure la voce <strong>Il tuo credito</strong> in Impostazioni. Nella finestra che si apre scrivi l'importo, o lo aggiusti con i pulsanti <strong>−100</strong> e <strong>+100</strong>, e salvi.</p>
     <p>Dentro quella card, il cerchio intorno alla percentuale è la parte di credito che ti resta: si svuota man mano che registri le spese, e la nuvoletta poco sotto cambia espressione quando il mese si fa stretto.</p>
+    <figure>
+      <img src="img/credito.png" alt="La card del credito del mese con il cerchio della percentuale residua, e sotto la nuvoletta con il messaggio sull'andamento" loading="lazy">
+      <figcaption>Il cerchio segna il credito che resta; la nuvoletta sotto commenta il mese.</figcaption>
+    </figure>
     <p>Il credito che imposti vale per il mese in corso. I mesi già chiusi restano con la cifra che avevano allora, così alzare il credito oggi non riscrive l'analisi di quelli passati.</p>
 
     <h3>Come metto un tetto di spesa a una categoria</h3>
     <p>Nella schermata principale, accanto a <strong>Budget</strong>, tocca <strong>Vedi tutti</strong>: si apre l'elenco delle categorie con quanto hai speso e quanto avevi previsto. Tocca una categoria per scriverne il tetto mensile, o usa il riquadro tratteggiato per creare una categoria nuova con il suo tetto, nome e colore.</p>
+    
+    <figure>
+      <img src="img/budget.png" alt="La sezione Budget della schermata principale con il collegamento «Vedi tutti» e le card delle categorie" loading="lazy">
+      <figcaption>Da «Vedi tutti», accanto a Budget, si apre l'elenco completo dei tetti.</figcaption>
+    </figure>
     <p>Come per il credito, i tetti valgono mese per mese: quelli dei mesi chiusi restano come erano.</p>
 
     <h3>Quando mi avvisa che il budget sta finendo</h3>
@@ -263,6 +300,11 @@ h2[id] { scroll-margin-top: 24px; }
 
     <h3>Le spese fisse si registrano da sole?</h3>
     <p>Sì, se le trasformi in ricorrenti. Puoi dettarle — «abbonamento palestra 39 euro al mese» crea insieme la spesa di oggi e la regola per i mesi prossimi — oppure crearle a mano da <strong>Ricorrenti</strong>, nella schermata principale, col pulsante <strong>+ Ricorrente</strong>.</p>
+    
+    <figure>
+      <img src="img/ricorrenti.png" alt="L'elenco delle spese ricorrenti, ognuna con importo, giorno del mese e un interruttore" loading="lazy">
+      <figcaption>Ogni ricorrente ha un interruttore: spento la mette in pausa, senza cancellare le spese già registrate.</figcaption>
+    </figure>
     <p>Le occorrenze nascono quando apri l'app, non mentre il telefono è in tasca: se resti settimane senza aprire <span class="nuvo">Nuvo</span>, al ritorno recupera gli arretrati in un colpo, senza mai creare due volte la stessa spesa. E se una l'hai cancellata a mano, non ricompare: la tua scelta vale più della regola.</p>
 
     <h2 id="dati">Dati e backup</h2>

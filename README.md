@@ -13,6 +13,7 @@ robots.txt          indicizzazione libera
 _headers            cache dei font (usato da Cloudflare Pages, ignorato da GitHub Pages)
 .nojekyll           evita che GitHub Pages processi i file
 fonts/              Baloo 2 e Nunito (woff2 variabili) + licenze OFL
+img/                ritagli dell'app usati nella pagina di assistenza
 ```
 
 **Nessuna richiesta a terzi.** I font sono serviti dal sito, non da Google: le
