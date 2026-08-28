@@ -1,46 +1,60 @@
-# Sito di Nuvo
+# nuvo-site
 
-Due pagine statiche, senza build e senza dipendenze: si pubblicano copiando
-la cartella così com'è.
+Il sito di [Nuvo](https://github.com/maruskam) — app per annotare le spese di
+casa a voce o dalla foto di uno scontrino. Due pagine statiche, senza build e
+senza dipendenze: il repo è già la radice del sito da pubblicare.
 
 ```
 index.html          il sito
 privacy.html        l'informativa privacy (URL da dare ad App Store Connect)
 favicon.svg         icona della scheda
 robots.txt          indicizzazione libera
+_headers            cache dei font (usato da Cloudflare Pages, ignorato da GitHub Pages)
 .nojekyll           evita che GitHub Pages processi i file
 fonts/              Baloo 2 e Nunito (woff2 variabili) + licenze OFL
 ```
 
-**Nessuna richiesta a terzi.** I font sono serviti dal dominio, non da Google:
-la pagina non contatta nessun host esterno, quindi non trasferisce l'IP dei
-visitatori a nessuno e non ha bisogno di banner cookie. Sono gli stessi file
-variabili impacchettati nell'app (`assets/fonts/`), sottoinsieme latino +
-latino esteso, licenza SIL OFL 1.1.
+**Nessuna richiesta a terzi.** I font sono serviti dal sito, non da Google: le
+pagine non contattano nessun host esterno, quindi non trasferiscono l'IP dei
+visitatori a nessuno e non serve un banner cookie. Sono gli stessi file
+variabili impacchettati nell'app, sottoinsieme latino + latino esteso, licenza
+SIL OFL 1.1 (`fonts/OFL-*.txt`).
 
-Verificato in locale: `document.fonts` entrambi `loaded`, zero risorse esterne
-in `performance.getEntriesByType('resource')`.
+I riferimenti interni sono tutti relativi, quindi il sito funziona sia sulla
+radice di un dominio sia in una sottocartella tipo `/nuvo-site/`.
 
 ## Prova in locale
 
 ```bash
-python3 -m http.server 4173 --directory site
+python3 -m http.server 4173
 ```
 
-Poi apri <http://localhost:4173>. Servono i percorsi relativi, quindi apri via
-server: con `file://` i font non caricano.
+Poi apri <http://localhost:4173>. Apri via server e non con `file://`, altrimenti
+i font non caricano.
 
 ## Pubblicazione — GitHub Pages
 
-1. Crea un repo (per esempio `nuvo-site`) e mettici **il contenuto** di questa
-   cartella alla radice, non la cartella stessa.
-2. Aggiungi un file `CNAME` con dentro solo il dominio, per esempio
-   `nuvo-app.it`.
-3. Settings → Pages → Source: `Deploy from a branch`, branch `main`, cartella
-   `/ (root)`.
-4. Spunta *Enforce HTTPS* appena il certificato è pronto (pochi minuti).
+```bash
+gh repo create nuvo-site --public --source=. --remote=origin --push
+```
 
-DNS da impostare presso il registrar (dominio senza `www`, cioè apex):
+Poi: Settings → Pages → Source `Deploy from a branch`, branch `main`, cartella
+`/ (root)`. In un paio di minuti il sito è su:
+
+```
+https://maruskam.github.io/nuvo-site/
+https://maruskam.github.io/nuvo-site/privacy.html   ← URL per App Store Connect
+```
+
+Gratis, HTTPS incluso, nessun dominio da comprare. Da qui in avanti ogni
+`git push` pubblica.
+
+### Con un dominio tuo (opzionale)
+
+1. Crea un file `CNAME` con dentro solo il dominio, per esempio `nuvo-app.it`.
+2. Settings → Pages → Custom domain, e spunta *Enforce HTTPS* quando il
+   certificato è pronto.
+3. Record DNS presso il registrar:
 
 | Tipo | Nome | Valore |
 |---|---|---|
@@ -48,32 +62,35 @@ DNS da impostare presso il registrar (dominio senza `www`, cioè apex):
 | A | `@` | `185.199.109.153` |
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
-| CNAME | `www` | `<utente>.github.io` |
+| CNAME | `www` | `maruskam.github.io` |
 
 Se il DNS è su Cloudflare, tieni i record su **DNS only** (nuvola grigia)
-almeno fino a quando GitHub ha emesso il certificato.
+finché GitHub non ha emesso il certificato.
 
-## Pubblicazione — Cloudflare Pages
+## Pubblicazione — Cloudflare Pages (alternativa)
 
-1. Dashboard Cloudflare → Workers & Pages → Create → Pages → collega il repo.
-2. Framework preset: `None`. Build command: **vuoto**. Output directory: `/`.
-3. Custom domains → aggiungi il dominio: se è già su Cloudflare, i record li
-   crea da sé.
+Workers & Pages → Create → Pages → collega il repo. Framework preset `None`,
+build command **vuoto**, output directory `/`. Ti dà un sottodominio con il
+nome che scegli tu (`nuvo-app.pages.dev`), pubblica anche da repo privati e
+usa il file `_headers`.
 
-Non serve il file `CNAME` (è una cosa di GitHub Pages) e puoi cancellarlo.
+## Quando cambi indirizzo
 
-## Email sul dominio
+Se passi dal sottodominio a un dominio tuo, aggiorna l'URL in App Store
+Connect ma **lascia in piedi la vecchia pagina** con un redirect, così i link
+già in circolazione non muoiono. Su GitHub Pages non ci sono redirect lato
+server: basta sostituire il contenuto di `privacy.html` con
 
-Cloudflare → Email → Email Routing: crea `ciao@tuodominio` inoltrata alla
-Gmail attuale, gratis. Quando è attiva ricordati di aggiornare l'indirizzo in
-`privacy.html` (punti 1, 9 e 13), nei link `mailto:` di `index.html` e nel
-campo *Email di feedback* di App Store Connect.
+```html
+<meta http-equiv="refresh" content="0; url=https://nuvo-app.it/privacy.html">
+```
 
 ## Da completare prima di pubblicare
 
 - `privacy.html`, punto 1: sostituire i segnaposto evidenziati con nome (o
-  ragione sociale) e indirizzo del titolare del trattamento.
-- `index.html`: quando l'app esce dalla beta, sostituire i pulsanti «Prova la
-  beta» / «Chiedi l'invito» con i link ad App Store e Google Play, e
-  aggiornare la risposta «Su quali telefoni funziona?».
+  ragione sociale) e indirizzo del titolare del trattamento. Senza quelli
+  l'informativa non regge come documento GDPR.
+- `index.html`: quando l'app esce dalla beta, sostituire «Prova la beta» e
+  «Chiedi l'invito» con i link ad App Store e Google Play, e aggiornare la
+  risposta «Su quali telefoni funziona?».
 - `privacy.html`: aggiornare la data in alto a ogni modifica sostanziale.
