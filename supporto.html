@@ -212,7 +212,7 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
       </a>
       <a class="card" href="#soldi">
-        <div class="txt"><b>Credito, budget e ricorrenti</b><span>Impostare il credito del mese, i tetti per categoria, le spese fisse</span></div>
+        <div class="txt"><b>Entrate, budget e tesoro</b><span>Il credito del mese, i tetti per categoria, quello che avanza</span></div>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
       </a>
       <a class="card" href="#dati">
@@ -273,17 +273,25 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <h3>Funziona anche con bollette e fatture?</h3>
     <p>Sì. In una bolletta il totale non è in fondo come su uno scontrino, ma dentro un riquadro in mezzo alla pagina, in mezzo a consumi e imposte. <span class="nuvo">Nuvo</span> riconosce di che tipo di documento si tratta e cerca l'importo dove sta davvero.</p>
 
-    <h2 id="soldi">Credito, budget e ricorrenti</h2>
+    <h2 id="soldi">Entrate, budget e tesoro</h2>
 
-    <h3>Che cos'è il credito del mese, e come lo imposto</h3>
-    <p>Il credito è la cifra che decidi di poter spendere in un mese: da lì <span class="nuvo">Nuvo</span> scala ogni spesa che registri. Non si detta, lo scrivi tu.</p>
-    <p>Si apre da due punti: la card <strong>Credito del mese</strong> in cima alla schermata principale, oppure la voce <strong>Il tuo credito</strong> in Impostazioni. Nella finestra che si apre scrivi l'importo, o lo aggiusti con i pulsanti <strong>−100</strong> e <strong>+100</strong>, e salvi.</p>
-    <p>Dentro quella card, il cerchio intorno alla percentuale è la parte di credito che ti resta: si svuota man mano che registri le spese, e la nuvoletta poco sotto cambia espressione quando il mese si fa stretto.</p>
+    <h3>Che cos'è il credito del mese, e come si imposta</h3>
+    <p>Il credito è quanto hai a disposizione in un mese, e non è un numero che scrivi una volta: è la <strong>somma delle tue entrate</strong> di quel mese. Lo stipendio il 27, un rimborso il 10, un affitto incassato il 5 — le metti una per una e <span class="nuvo">Nuvo</span> le somma.</p>
+    <p>Si apre da due punti: la card <strong>Credito del mese</strong> in cima alla schermata principale, oppure <strong>Il tuo credito</strong> in Impostazioni. Dentro trovi il totale e l'elenco delle entrate: tocca <strong>+ Entrata</strong> per aggiungerne una, o una riga per modificarla.</p>
+    <p>Ogni entrata ha un nome, un importo, il giorno in cui arriva e un interruttore: se è <strong>ricorrente</strong> — come uno stipendio — torna da sola ogni mese, e non devi reinserirla. Se è una tantum, vale solo per il mese in cui l'hai messa.</p>
     <figure>
-      <img src="img/credito.png" alt="La card del credito del mese con il cerchio della percentuale residua, e sotto la nuvoletta con il messaggio sull'andamento" loading="lazy">
-      <figcaption>Il cerchio segna il credito che resta; la nuvoletta sotto commenta il mese.</figcaption>
+      <img src="img/credito.png" alt="La scheda del credito: il totale del mese e sotto l'elenco delle entrate, stipendio e affitto incassato" loading="lazy">
+      <figcaption>Il totale in alto è la somma delle entrate qui sotto; con <strong>+ Entrata</strong> se ne aggiunge una.</figcaption>
     </figure>
-    <p>Il credito che imposti vale per il mese in corso. I mesi già chiusi restano con la cifra che avevano allora, così alzare il credito oggi non riscrive l'analisi di quelli passati.</p>
+    <p>Le entrate che imposti valgono per il mese in corso e per quelli futuri, se ricorrenti. I mesi già chiusi restano con le cifre che avevano allora, così aggiungere un'entrata oggi non riscrive l'analisi di quelli passati.</p>
+
+    <h3>Che cos'è il tesoro?</h3>
+    <p>È quanto hai messo da parte, mese dopo mese: ogni mese chiuso in positivo lascia lì il suo avanzo, e i mesi in cui hai sforato se ne prendono un pezzo. Lo apri con l'icona del barattolo, in alto nella schermata principale.</p>
+    <figure>
+      <img src="img/tesoro.png" alt="La schermata del tesoro: il totale messo da parte, la nuvoletta con la monetina e l'elenco dei mesi chiusi" loading="lazy">
+      <figcaption>Ogni mese chiuso compare nell'elenco: in verde quelli in positivo, in rosso quelli in cui hai sforato.</figcaption>
+    </figure>
+    <p><strong>Dal tesoro non si preleva.</strong> Non è un conto e non è un salvadanaio dove spostare soldi: è un totale calcolato dai tuoi mesi, che serve a vedere la strada fatta. Per la stessa ragione il mese in corso non ci entra finché non è chiuso — lo trovi indicato a parte, in fondo alla schermata.</p>
 
     <h3>Come metto un tetto di spesa a una categoria</h3>
     <p>Nella schermata principale, accanto a <strong>Budget</strong>, tocca <strong>Vedi tutti</strong>: si apre l'elenco delle categorie con quanto hai speso e quanto avevi previsto. Tocca una categoria per scriverne il tetto mensile, o usa il riquadro tratteggiato per creare una categoria nuova con il suo tetto, nome e colore.</p>
