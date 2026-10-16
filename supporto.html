@@ -11,7 +11,7 @@
 /* Baloo 2 e Nunito serviti dal nostro dominio: nessuna richiesta a Google,
    quindi nessun indirizzo IP dei visitatori verso terzi e nessun banner da
    mettere. Sono gli stessi file variabili impacchettati nell'app
-   (assets/fonts/), licenza SIL OFL 1.1 — copia in fonts/. */
+   (assets/fonts/), licenza SIL OFL 1.1, copia in fonts/. */
 @font-face {
   font-family: 'Baloo 2';
   src: url('fonts/Baloo2-latin.woff2') format('woff2');
@@ -223,8 +223,8 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
         <div class="txt"><b>Promemoria e sicurezza</b><span>Promemoria che non arrivano, blocco con Face ID o impronta</span></div>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
       </a>
-      <a class="card" href="#beta">
-        <div class="txt"><b>Beta su TestFlight</b><span>Come provare Nuvo prima che arrivi sull'App Store</span></div>
+      <a class="card" href="#scarica">
+        <div class="txt"><b>Scaricare e aggiornare</b><span>Dove si trova Nuvo e come arrivano le nuove versioni</span></div>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
       </a>
     </div>
@@ -239,7 +239,7 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <h3>Come detto una spesa</h3>
     <p>Nella schermata principale, in basso al centro, c'è il pulsante col microfono <span class="btn-inline" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="2.5" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0"></path><path d="M12 17.5V21"></path></svg></span>: toccalo e parla. <span class="nuvo">Nuvo</span> ascolta, si ferma da sé dopo un paio di secondi di silenzio e ti mostra cosa ha capito.</p>
     <figure>
-      <img src="img/barra.png" alt="La barra in basso della schermata principale, con il pulsante del microfono al centro e quello della fotocamera accanto">
+      <img src="img/barra.png" alt="La barra in basso della schermata principale, con i tre pulsanti Scrivi, Detta e Foto">
       <figcaption>La barra in basso: microfono per dettare, fotocamera per lo scontrino.</figcaption>
     </figure>
     <p>Basta dire <strong>cosa</strong> e <strong>quanto</strong>: «Coop 22 euro», «benzina 40 euro», «dentista 350 euro». Funziona anche dentro una frase intera, come «oggi ho fatto la spesa alla Coop e ho speso 22 euro».</p>
@@ -268,7 +268,7 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
 
     <h3>Ha preso il numero sbagliato</h3>
     <p>Su uno scontrino ci sono molti numeri e uno solo è il totale: <span class="nuvo">Nuvo</span> scarta di proposito subtotali, IVA, contante e resto, ma non è infallibile. L'importo lo puoi correggere nella schermata di conferma, prima di salvare.</p>
-    <p>Per aiutarla: inquadra il documento intero, appoggiato su una superficie piatta e con luce uniforme, evitando ombre e pieghe sulla riga del totale. Se sbaglia comunque, mandaci la foto — ci serve per migliorare la lettura.</p>
+    <p>Per aiutarla: inquadra il documento intero, appoggiato su una superficie piatta e con luce uniforme, evitando ombre e pieghe sulla riga del totale. Se sbaglia comunque, mandaci la foto: ci serve per migliorare la lettura.</p>
 
     <h3>Funziona anche con bollette e fatture?</h3>
     <p>Sì. In una bolletta il totale non è in fondo come su uno scontrino, ma dentro un riquadro in mezzo alla pagina, in mezzo a consumi e imposte. <span class="nuvo">Nuvo</span> riconosce di che tipo di documento si tratta e cerca l'importo dove sta davvero.</p>
@@ -276,9 +276,9 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <h2 id="soldi">Entrate, budget e risparmi</h2>
 
     <h3>Che cos'è il credito del mese, e come si imposta</h3>
-    <p>Il credito è quanto hai a disposizione in un mese, e non è un numero che scrivi una volta: è la <strong>somma delle tue entrate</strong> di quel mese. Lo stipendio il 27, un rimborso il 10, un affitto incassato il 5 — le metti una per una e <span class="nuvo">Nuvo</span> le somma.</p>
+    <p>Il credito è quanto hai a disposizione in un mese, e non è un numero che scrivi una volta: è la <strong>somma delle tue entrate</strong> di quel mese. Lo stipendio il 27, un rimborso il 10, un affitto incassato il 5, le metti una per una e <span class="nuvo">Nuvo</span> le somma.</p>
     <p>Si apre da due punti: la card <strong>Credito del mese</strong> in cima alla schermata principale, oppure <strong>Il tuo credito</strong> in Impostazioni. Dentro trovi il totale e l'elenco delle entrate: tocca <strong>+ Entrata</strong> per aggiungerne una, o una riga per modificarla.</p>
-    <p>Ogni entrata ha un nome, un importo, il giorno in cui arriva e un interruttore: se è <strong>ricorrente</strong> — come uno stipendio — torna da sola ogni mese, e non devi reinserirla. Se è una tantum, vale solo per il mese in cui l'hai messa.</p>
+    <p>Ogni entrata ha un nome, un importo, il giorno in cui arriva e un interruttore: se è <strong>ricorrente</strong>, come uno stipendio, torna da sola ogni mese, e non devi reinserirla. Se è una tantum, vale solo per il mese in cui l'hai messa.</p>
     <figure>
       <img src="img/credito.png" alt="La scheda del credito: il totale del mese e sotto l'elenco delle entrate, stipendio e affitto incassato" loading="lazy">
       <figcaption>Il totale in alto è la somma delle entrate qui sotto; con <strong>+ Entrata</strong> se ne aggiunge una.</figcaption>
@@ -291,7 +291,7 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
       <img src="img/risparmi.png" alt="La schermata dei risparmi: il totale messo da parte, la nuvoletta con la monetina e l'elenco dei mesi chiusi" loading="lazy">
       <figcaption>Ogni mese chiuso compare nell'elenco: in verde quelli in positivo, in rosso quelli in cui hai sforato.</figcaption>
     </figure>
-    <p><strong>Da qui non si preleva.</strong> Non è un conto e non c'è niente da spostare: è un totale calcolato dai tuoi mesi, che serve a vedere la strada fatta. Per la stessa ragione il mese in corso non ci entra finché non è chiuso — lo trovi indicato a parte, in fondo alla schermata.</p>
+    <p><strong>Da qui non si preleva.</strong> Non è un conto e non c'è niente da spostare: è un totale calcolato dai tuoi mesi, che serve a vedere la strada fatta. Per la stessa ragione il mese in corso non ci entra finché non è chiuso: lo trovi indicato a parte, in fondo alla schermata.</p>
 
     <h3>Come metto un tetto di spesa a una categoria</h3>
     <p>Nella schermata principale, accanto a <strong>Budget</strong>, tocca <strong>Vedi tutti</strong>: si apre l'elenco delle categorie con quanto hai speso e quanto avevi previsto. Tocca una categoria per scriverne il tetto mensile, o usa il riquadro tratteggiato per creare una categoria nuova con il suo tetto, nome e colore.</p>
@@ -307,7 +307,7 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <p>Perché arrivi servono i promemoria attivi: vedi <a href="#avvisi">Promemoria e sicurezza</a>.</p>
 
     <h3>Le spese fisse si registrano da sole?</h3>
-    <p>Sì, se le trasformi in ricorrenti. Puoi dettarle — «abbonamento palestra 39 euro al mese» crea insieme la spesa di oggi e la regola per i mesi prossimi — oppure crearle a mano da <strong>Ricorrenti</strong>, nella schermata principale, col pulsante <strong>+ Ricorrente</strong>.</p>
+    <p>Sì, se le trasformi in ricorrenti. Puoi dettarle («abbonamento palestra 39 euro al mese» crea insieme la spesa di oggi e la regola per i mesi prossimi) oppure crearle a mano da <strong>Ricorrenti</strong>, nella schermata principale, col pulsante <strong>+ Ricorrente</strong>.</p>
     
     <figure>
       <img src="img/ricorrenti.png" alt="L'elenco delle spese ricorrenti, ognuna con importo, giorno del mese e un interruttore" loading="lazy">
@@ -318,12 +318,12 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <h2 id="dati">Dati e backup</h2>
 
     <h3>Sto cambiando telefono: come porto le spese sul nuovo?</h3>
-    <p>In Impostazioni, sotto <strong>Backup</strong>, tocca <strong>Salva un backup</strong>: <span class="nuvo">Nuvo</span> prepara un file con tutte le spese, le foto e le impostazioni e ti chiede dove mandarlo — AirDrop, iCloud, email, quello che preferisci.</p>
+    <p>In Impostazioni, sotto <strong>Backup</strong>, tocca <strong>Salva un backup</strong>: <span class="nuvo">Nuvo</span> prepara un file con tutte le spese, le foto e le impostazioni e ti chiede dove mandarlo: AirDrop, iCloud, email, quello che preferisci.</p>
     <p>Sul telefono nuovo installa <span class="nuvo">Nuvo</span>, apri le Impostazioni e scegli <strong>Ripristina da backup</strong>, indicando quel file. Attenzione: il ripristino <strong>sostituisce</strong> i dati presenti, quindi fallo prima di iniziare a registrare spese sul telefono nuovo.</p>
 
     <h3>Le spese si sincronizzano fra due telefoni?</h3>
     <p>No, e non c'è un account con cui farlo. Le spese vivono sul telefono dove le hai registrate e si spostano solo con il file di backup.</p>
-    <p>Il rovescio della medaglia: se perdi il telefono e non hai un backup, quelle spese non si recuperano — nemmeno noi possiamo, perché non ne abbiamo mai avuto una copia. È lo stesso motivo per cui nessuno può leggerle.</p>
+    <p>Il rovescio della medaglia: se perdi il telefono e non hai un backup, quelle spese non si recuperano: nemmeno noi possiamo, perché non ne abbiamo mai avuto una copia. È lo stesso motivo per cui nessuno può leggerle.</p>
 
     <h3>Posso aprire le mie spese in un foglio di calcolo?</h3>
     <p>Sì: Impostazioni → <strong>Esporta le spese (CSV)</strong>. Ottieni un file che Excel, Numbers o Fogli Google aprono direttamente, con una riga per spesa.</p>
@@ -343,24 +343,26 @@ figcaption { margin-top: 8px; font: 600 12.5px/1.45 Nunito, sans-serif; color: v
     <p>In Impostazioni c'è <strong>Proteggi con Face ID o impronta</strong>: da quel momento <span class="nuvo">Nuvo</span> chiede il riconoscimento a ogni apertura.</p>
     <p>Usa il blocco già configurato nel telefono, quindi se non hai impostato Face ID, Touch ID o l'impronta l'interruttore non si accende e l'app te lo dice. Attivalo nelle impostazioni del telefono e riprova. Il volto o l'impronta non passano per <span class="nuvo">Nuvo</span>: il confronto lo fa il sistema, l'app riceve solo un sì o un no.</p>
 
-    <h2 id="beta">Beta su TestFlight</h2>
+    <h2 id="scarica">Scaricare e aggiornare</h2>
 
-    <h3>Come entro nella beta</h3>
-    <p><span class="nuvo">Nuvo</span> è in prova su TestFlight, l'app di Apple con cui si provano le applicazioni prima che arrivino sull'App Store. Scrivici e ti mandiamo l'invito: ti serve solo l'indirizzo email con cui usi l'iPhone.</p>
+    <h3>Dove trovo Nuvo</h3>
+    <p><span class="nuvo">Nuvo</span> è gratis sull'<a href="https://apps.apple.com/it/app/id6805154051" rel="noopener">App Store</a>, per iPhone. La versione Android è in lavorazione e arriverà su Google Play.</p>
 
-    <h3>Come segnalo un problema durante la beta</h3>
-    <p>Il modo più rapido è da dentro TestFlight: fai uno screenshot o scuoti il telefono, poi tocca <strong>Invia feedback</strong>. Insieme al tuo messaggio ci arrivano l'immagine e i dettagli del dispositivo, che è metà del lavoro di capire cosa è andato storto.</p>
-    <p>Va benissimo anche una email, se preferisci.</p>
+    <h3>Come arrivano gli aggiornamenti</h3>
+    <p>Dall'App Store, come per ogni app: con gli aggiornamenti automatici attivi la nuova versione si installa da sola, altrimenti la trovi nella scheda Aggiornamenti. I tuoi dati restano dove sono: un aggiornamento non li tocca mai.</p>
+
+    <h3>Come segnalo un problema</h3>
+    <p>Dal Profilo, tocca <strong>Scrivi all'assistenza</strong>: si apre la Posta con una mail già compilata, che in fondo riporta modello del telefono, versione del sistema e versione di <span class="nuvo">Nuvo</span>. Aggiungi cosa è successo, se puoi uno screenshot, e invia. Va benissimo anche una email scritta a mano, se preferisci.</p>
 
     <div class="contact">
       <h2>Scrivici</h2>
-      <p>Ci dispiace che le domande frequenti non abbiano risposto alla tua. Mandaci un messaggio: leggiamo tutto e rispondiamo il prima possibile — di solito lo stesso giorno, al massimo entro due giorni lavorativi.</p>
+      <p>Ci dispiace che le domande frequenti non abbiano risposto alla tua. Mandaci un messaggio: leggiamo tutto e rispondiamo il prima possibile, di solito lo stesso giorno e al massimo entro due giorni lavorativi.</p>
       <a class="mail" href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>
-      <p class="small">Per un problema, se puoi aggiungi telefono e versione del sistema, la versione di <span class="nuvo">Nuvo</span> (Impostazioni → Licenze open source), la frase esatta che hai dettato o la foto del documento. Per una proposta o una nuova funzione, raccontaci solo cosa vorresti fare.</p>
+      <p class="small">Per un problema, se puoi aggiungi telefono e versione del sistema, la versione di <span class="nuvo">Nuvo</span> (se scrivi da «Scrivi all'assistenza» nel Profilo ci sono già), la frase esatta che hai dettato o la foto del documento. Per una proposta o una nuova funzione, raccontaci solo cosa vorresti fare.</p>
     </div>
 
     <h2>Privacy</h2>
-    <p>Come vengono trattati i dati — cioè: non escono dal telefono — sta scritto nell'<a href="privacy.html">informativa privacy</a>.</p>
+    <p>Come vengono trattati i dati (cioè: non escono dal telefono) sta scritto nell'<a href="privacy.html">informativa privacy</a>.</p>
 
   </div>
 </main>

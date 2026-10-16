@@ -11,7 +11,7 @@
 /* Baloo 2 e Nunito serviti dal nostro dominio: nessuna richiesta a Google,
    quindi nessun indirizzo IP dei visitatori verso terzi e nessun banner da
    mettere. Sono gli stessi file variabili impacchettati nell'app
-   (assets/fonts/), licenza SIL OFL 1.1 — copia in fonts/. */
+   (assets/fonts/), licenza SIL OFL 1.1, copia in fonts/. */
 @font-face {
   font-family: 'Baloo 2';
   src: url('fonts/Baloo2-latin.woff2') format('woff2');
@@ -149,7 +149,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
     <ul>
       <li>le <strong>spese</strong>: importo, valuta, esercente o descrizione, categoria, data, note di ricorrenza;</li>
       <li>le <strong>foto</strong> di scontrini, bollette e fatture che scegli di allegare a una spesa;</li>
-      <li>le tue <strong>entrate</strong>: nome, importo, giorno del mese e se si ripetono — è da queste che nasce il credito del mese;</li>
+      <li>le tue <strong>entrate</strong>: nome, importo, giorno del mese e se si ripetono: è da queste che nasce il credito del mese;</li>
       <li>le tue <strong>impostazioni</strong>: nome con cui l'app ti chiama, budget per categoria, lingua, valuta, formato dei numeri, promemoria attivi;</li>
       <li>ciò che l'app <strong>impara dalle tue correzioni</strong> (l'associazione fra un esercente e una categoria), che resta un dato locale come gli altri;</li>
       <li>una <strong>copia dei tassi di cambio</strong> già scaricati, per funzionare offline.</li>
@@ -187,7 +187,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
 
     <h2>5. Dettatura e lettura degli scontrini</h2>
     <p><strong>La voce.</strong> La trascrizione la fa il riconoscimento vocale del sistema operativo, e Nuvo chiede sempre la modalità <em>sul dispositivo</em>: quando il modello della tua lingua è installato sul telefono, l'audio non esce dal dispositivo. Se quel modello non è disponibile, il riconoscimento di sistema può ripiegare sull'elaborazione sui server di Apple o Google, secondo le impostazioni e le informative del produttore del telefono (<a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple</a>, <a href="https://policies.google.com/privacy" rel="noopener">Google</a>). In quel caso Nuvo riceve solo il testo trascritto: la registrazione non viene conservata né dall'app né dal titolare. Se preferisci evitarlo del tutto, scarica il modello della tua lingua dalle impostazioni del telefono oppure usa la foto o l'inserimento a mano.</p>
-    <p><strong>Le foto.</strong> Il testo dei documenti viene letto dal riconoscimento testo di sistema — Vision su iPhone, ML Kit su Android — che lavora <strong>sul dispositivo</strong>, anche in aereo. Le immagini restano nell'area riservata all'app, legate alla spesa, e vengono eliminate quando elimini la spesa o l'app.</p>
+    <p><strong>Le foto.</strong> Il testo dei documenti viene letto dal riconoscimento testo di sistema (Vision su iPhone, ML Kit su Android), che lavora <strong>sul dispositivo</strong>, anche in aereo. Le immagini restano nell'area riservata all'app, legate alla spesa, e vengono eliminate quando elimini la spesa o l'app.</p>
     <p>A dare un senso alle parole (importo, esercente, categoria, data, ricorrenza) ci pensano regole scritte dentro l'app, che girano offline.</p>
 
     <h2>6. Le connessioni di rete</h2>
@@ -200,23 +200,23 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
     <h2>7. Mance e acquisti in-app</h2>
     <p>Nuvo è gratuita e non ha funzioni a pagamento. Dalle impostazioni puoi lasciare una <strong>mancia una tantum</strong>: il pagamento è gestito interamente da App Store o Google Play, che ti addebitano con i dati già presenti sul tuo account. Chi sviluppa l'app <strong>non vede</strong> né riceve numeri di carta, indirizzi o altri dati di pagamento: dagli store arrivano solo rendiconti aggregati delle vendite. Le mance sono acquisti consumabili: non sbloccano nulla e non si trasferiscono ad altri dispositivi.</p>
 
-    <h2>8. Backup, export e beta</h2>
+    <h2>8. Backup, export e versioni di prova</h2>
     <p><strong>Backup ed export.</strong> Dalle impostazioni puoi creare un file di backup (spese, foto e impostazioni) o esportare le spese in CSV. Il file esce dall'app solo dove lo mandi tu: se lo salvi su iCloud, Google Drive o lo mandi per email, da quel momento vale l'informativa del servizio che hai scelto. Il file non è cifrato: conservalo dove conservi i documenti che ti riguardano.</p>
-    <p><strong>Beta su TestFlight.</strong> Se provi Nuvo come tester, l'iscrizione e l'invio dei feedback passano da Apple: Apple tratta il tuo indirizzo email, gli screenshot e i commenti che invii, oltre ai dati diagnostici previsti dalle sue impostazioni, e li rende visibili allo sviluppatore. Vale l'<a href="https://www.apple.com/legal/privacy/data/it/testflight/" rel="noopener">informativa TestFlight di Apple</a>. Se mi scrivi un feedback via email, vale il punto seguente.</p>
+    <p><strong>Versioni di prova su TestFlight.</strong> Se in futuro provi una versione di Nuvo come tester, l'iscrizione e l'invio dei feedback passano da Apple: Apple tratta il tuo indirizzo email, gli screenshot e i commenti che invii, oltre ai dati diagnostici previsti dalle sue impostazioni, e li rende visibili allo sviluppatore. Vale l'<a href="https://www.apple.com/legal/privacy/data/it/testflight/" rel="noopener">informativa TestFlight di Apple</a>. Se mi scrivi un feedback via email, vale il punto seguente.</p>
 
     <h2>9. Se mi scrivi</h2>
     <p>Quando scrivi a <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>, il titolare tratta l'indirizzo email e il contenuto del messaggio (compresi eventuali screenshot che allegi) al solo scopo di risponderti e correggere il problema segnalato. La base giuridica è l'interesse legittimo a fornire assistenza su un'app gratuita, ai sensi dell'art. 6.1.f del Regolamento (UE) 2016/679. I messaggi vengono conservati per il tempo necessario a gestire la richiesta e comunque non oltre 24 mesi; la casella è ospitata su Gmail (Google Ireland Ltd.), che agisce come fornitore del servizio di posta.</p>
     <p>Non uso i tuoi contatti per newsletter o comunicazioni commerciali.</p>
 
     <h2>10. I tuoi diritti</h2>
-    <p>Sui dati che stanno nel telefono i comandi li hai già in mano, senza dover chiedere niente a nessuno: puoi modificare o eliminare ogni singola spesa, esportare tutto in CSV o in un file di backup — è il diritto di portabilità, in pratica — e cancellare l'intero archivio disinstallando l'app. Nessuno conserva una copia dopo di te.</p>
-    <p>Per i dati del punto 9 (le email che mi mandi) puoi esercitare i diritti previsti dagli articoli 15-22 del GDPR — accesso, rettifica, cancellazione, limitazione, opposizione, portabilità — scrivendo allo stesso indirizzo. Hai inoltre diritto di proporre reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+    <p>Sui dati che stanno nel telefono i comandi li hai già in mano, senza dover chiedere niente a nessuno: puoi modificare o eliminare ogni singola spesa, esportare tutto in CSV o in un file di backup (è il diritto di portabilità, in pratica) e cancellare l'intero archivio disinstallando l'app. Nessuno conserva una copia dopo di te.</p>
+    <p>Per i dati del punto 9 (le email che mi mandi) puoi esercitare i diritti previsti dagli articoli 15-22 del GDPR (accesso, rettifica, cancellazione, limitazione, opposizione, portabilità) scrivendo allo stesso indirizzo. Hai inoltre diritto di proporre reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
 
     <h2>11. Minori</h2>
     <p>Nuvo non è pensata per essere usata da bambini e non raccoglie dati da nessuno, quindi non tratta dati di minori. Se un minore usa l'app sul proprio dispositivo, i dati inseriti restano su quel dispositivo sotto il controllo di chi ne ha la responsabilità.</p>
 
     <h2>12. Modifiche a questa informativa</h2>
-    <p>Se una versione futura dell'app introdurrà funzioni che cambiano il quadro descritto qui — per esempio una sincronizzazione fra dispositivi — questa pagina verrà aggiornata prima del rilascio, con la nuova data in alto, e la novità sarà spiegata dentro l'app. Nessuna funzione che invii i tuoi dati altrove verrà attivata senza dirtelo.</p>
+    <p>Se una versione futura dell'app introdurrà funzioni che cambiano il quadro descritto qui, per esempio una sincronizzazione fra dispositivi, questa pagina verrà aggiornata prima del rilascio, con la nuova data in alto, e la novità sarà spiegata dentro l'app. Nessuna funzione che invii i tuoi dati altrove verrà attivata senza dirtelo.</p>
 
     <h2>13. Contatti</h2>
     <p>Per qualsiasi domanda su questa informativa: <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>.</p>

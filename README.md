@@ -93,9 +93,10 @@ server: basta sostituire il contenuto di `privacy.html` con
 - `privacy.html`, punto 1: sostituire i segnaposto evidenziati con nome (o
   ragione sociale) e indirizzo del titolare del trattamento. Senza quelli
   l'informativa non regge come documento GDPR.
-- `index.html`: quando l'app esce dalla beta, sostituire «Prova la beta» e
-  «Chiedi l'invito» con i link ad App Store e Google Play, e aggiornare la
+- `index.html` e `supporto.html`: quando esce la versione Android, aggiungere
+  il link a Google Play accanto a quello dell'App Store e aggiornare la
   risposta «Su quali telefoni funziona?».
+- Testi: mai il trattino lungo «—»; al suo posto virgole, due punti o parentesi.
 - `privacy.html`: aggiornare la data in alto a ogni modifica sostanziale.
 - `supporto.html`: se cambi l'indirizzo email, va aggiornato anche qui (tre punti)
   oltre che nell'informativa.
