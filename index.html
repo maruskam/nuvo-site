@@ -236,7 +236,11 @@ nav a:hover { color: var(--violet); }
 .costs .lede { color: rgba(244, 242, 252, .74); max-width: 56ch; }
 .tip-card { border-radius: var(--radius-lg); background: var(--ground); color: var(--ink); padding: 26px; text-align: center; }
 .tip-card .note { margin-top: 4px; font: 600 13px/1.5 Nunito, sans-serif; color: var(--ink-58); }
-.tip-cta { margin-top: 18px; border-radius: var(--radius-sm); background: var(--violet); padding: 14px; font: 800 15px 'Baloo 2', Nunito, sans-serif; color: var(--on-accent); }
+.tip-cta { display: block; margin-top: 18px; border-radius: var(--radius-sm); background: var(--violet); padding: 14px; font: 800 15px 'Baloo 2', Nunito, sans-serif; color: var(--on-accent); text-decoration: none; }
+.tip-cta.ghost { margin-top: 10px; background: transparent; color: var(--violet); border: 2px solid var(--violet-soft); }
+.tip-cta.ghost:hover { background: var(--violet-soft); color: var(--violet); }
+.costs h2 .q { display: block; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; }
+.costs h2 .a { display: block; margin-top: 10px; font-size: clamp(20px, 2.6vw, 26px); color: rgba(244, 242, 252, .74); }
 
 /* domande */
 .faq { margin-top: 30px; display: grid; gap: 18px 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
@@ -541,15 +545,15 @@ footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
 <section class="costs" id="costi">
   <div class="wrap costs-grid">
     <div>
-      <p class="eyebrow">Quanto costa</p>
-      <h2>Niente. Se vuoi, offrimi un caffè.</h2>
-      <p class="lede">Senza server e senza AI, far funzionare Nuvo non costa quasi nulla: per questo è gratis, senza abbonamenti né funzioni bloccate. Gli store e la manutenzione però un piccolo costo ce l'hanno. Se ti è utile, una mancia la tiene in vita.</p>
+      <h2><span class="q">Quanto costa?</span><span class="a">Niente.</span></h2>
+      <p class="lede">Senza server e senza AI, far funzionare Nuvo non costa quasi nulla: per questo è gratis, senza abbonamenti né funzioni bloccate. Lo sviluppo, la distribuzione negli store e il miglioramento dell'app però un costo ce l'hanno. Se vuoi, puoi contribuire con un piccolo contributo.</p>
     </div>
     <div class="tip-card">
       <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto" aria-hidden="true"><path d="M4.5 8.5h11.5v5.5a4.5 4.5 0 0 1-4.5 4.5H9a4.5 4.5 0 0 1-4.5-4.5V8.5z"></path><path d="M16 9.8h1.9a2.3 2.3 0 0 1 0 4.6H16"></path><path d="M7.2 5.6c.7-.8 1.4-.8 2.1 0M12 5.2c.7-.8 1.4-.8 2.1 0"></path><path d="M5 21h11"></path></svg>
       <h3 style="margin-top:12px">Quanto ti senti</h3>
-      <p class="note">Una volta, non ogni mese. Dentro l'app, quando ti va. Non sblocca nulla, perché non c'è niente da sbloccare.</p>
-      <div class="tip-cta">Offrimi un caffè</div>
+      <p class="note">Offrimi un caffè dall'app, quando ti va, e lascia una recensione sullo store: costa zero e vale quanto il caffè.</p>
+      <a class="tip-cta" href="https://apps.apple.com/it/app/id6805154051" rel="noopener">Offrimi un caffè</a>
+      <a class="tip-cta ghost" href="https://apps.apple.com/it/app/id6805154051?action=write-review" rel="noopener">Scrivi una recensione</a>
     </div>
   </div>
 </section>
