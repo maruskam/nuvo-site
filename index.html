@@ -224,6 +224,10 @@ nav a:hover { color: var(--violet); }
 @media (max-width: 900px) { .privacy-grid { grid-template-columns: minmax(0, 1fr); } }
 .quote { margin-top: 26px; display: flex; align-items: center; gap: 14px; border-radius: var(--radius); background: var(--green-soft); padding: 16px 18px; font: 600 14px/1.5 Nunito, sans-serif; }
 .facts { display: flex; flex-direction: column; gap: 10px; }
+.learn { margin-top: clamp(36px, 5vw, 56px); padding-top: clamp(28px, 4vw, 40px); border-top: 1px solid var(--violet-line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 900px) { .learn { grid-template-columns: minmax(0, 1fr); } }
+.learn h3 { font-size: clamp(20px, 2.6vw, 24px); }
+.learn p { margin-top: 12px; font-size: 15.5px; line-height: 1.6; color: var(--ink-72); }
 .fact { border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-card); padding: 17px 20px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .fact b { font: 800 15px 'Baloo 2', Nunito, sans-serif; flex: 1; min-width: 130px; }
 .fact span { font: 600 13px Nunito, sans-serif; color: var(--ink-58); }
@@ -531,6 +535,20 @@ footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
       <div class="fact"><b>Niente pubblicità</b><span>e nessun dato in vendita</span></div>
       <div class="fact"><b>Niente statistiche</b><span>nessun tracciamento, nessun analytics</span></div>
       <div class="fact"><b>Funziona offline</b><span>in aereo, in cantina, in vacanza</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="learn">
+      <div>
+        <p class="eyebrow green">Come impara</p>
+        <h3>Si ricorda le tue correzioni.</h3>
+        <p>Nuvo non usa intelligenza artificiale: segue regole scritte a mano, e impara da te. La prima volta che dici «Farmacia 18 e 50» sceglie la categoria in base alle parole che conosce (Salute, perché «farmacia» è fra le sue). Se nella conferma la cambi, si segna la correzione: da quel momento «Farmacia» va dove hai detto tu, e ogni conferma successiva rafforza la scelta. Lo stesso vale per i nomi che inventi: se «Da Gino» per te è Fuori casa, dopo la prima correzione lo sarà sempre.</p>
+      </div>
+      <div>
+        <p class="eyebrow green">E lo puoi aiutare</p>
+        <h3>Le parole che richiamano una categoria.</h3>
+        <p>Ogni categoria ha le sue parole, e quando ne crei una nuova puoi scriverle tu («veterinario, croccantini» per Animali). Quello che Nuvo impara resta nel tuo telefono, dentro il backup, e non esce mai da lì.</p>
+      </div>
     </div>
   </div>
 </section>
