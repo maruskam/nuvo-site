@@ -90,9 +90,6 @@ server: basta sostituire il contenuto di `privacy.html` con
 
 ## Da completare prima di pubblicare
 
-- `privacy.html`, punto 1: sostituire i segnaposto evidenziati con nome (o
-  ragione sociale) e indirizzo del titolare del trattamento. Senza quelli
-  l'informativa non regge come documento GDPR.
 - `index.html` e `supporto.html`: quando esce la versione Android, aggiungere
   il link a Google Play accanto a quello dell'App Store e aggiornare la
   risposta «Su quali telefoni funziona?».

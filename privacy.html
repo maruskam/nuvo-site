@@ -140,11 +140,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
 <main>
   <div class="wrap">
 
-    <h2>1. Chi è il titolare del trattamento</h2>
-    <p>Nuvo è sviluppata e pubblicata da <span class="fill">[nome e cognome o ragione sociale del titolare]</span>, <span class="fill">[indirizzo]</span>, contattabile all'indirizzo <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>.</p>
-    <p>Poiché l'app non trasmette dati a chi la sviluppa, il titolare tratta dati personali solo nel caso in cui tu scelga di scrivergli (vedi il punto 9).</p>
-
-    <h2>2. Che cosa resta sul tuo telefono</h2>
+    <h2>1. Che cosa resta sul tuo telefono</h2>
     <p>Tutto quello che inserisci in Nuvo vive esclusivamente sul dispositivo, nell'area riservata all'app:</p>
     <ul>
       <li>le <strong>spese</strong>: importo, valuta, esercente o descrizione, categoria, data, note di ricorrenza;</li>
@@ -156,7 +152,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
     </ul>
     <p>Nessuna di queste informazioni viene inviata a chi sviluppa l'app né a terzi. Non esiste una copia sul cloud gestita da Nuvo: l'unica copia è la tua.</p>
 
-    <h2>3. Che cosa Nuvo non fa</h2>
+    <h2>2. Che cosa Nuvo non fa</h2>
     <ul>
       <li>Non richiede né crea <strong>account</strong>, e non chiede email, numero di telefono o dati di pagamento.</li>
       <li>Non usa strumenti di <strong>analytics</strong>, statistiche d'uso o crash reporting di terze parti.</li>
@@ -167,7 +163,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
     </ul>
     <p>Nel linguaggio delle etichette privacy di Apple e Google, questo corrisponde a «nessun dato raccolto» e a nessun tracciamento.</p>
 
-    <h2>4. I permessi che Nuvo chiede</h2>
+    <h2>3. I permessi che Nuvo chiede</h2>
     <p>Ogni permesso viene richiesto la prima volta che usi davvero la funzione, non all'avvio, ed è sempre rifiutabile: l'app continua a funzionare con i modi di inserimento che restano.</p>
     <div class="table-scroll">
       <table>
@@ -176,7 +172,7 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
         </thead>
         <tbody>
           <tr><td>Microfono</td><td>Ascoltare la spesa che detti, solo mentre la dettatura è attiva. Il microfono si accende quando tocchi la nuvoletta e si spegne appena hai finito.</td></tr>
-          <tr><td>Riconoscimento vocale</td><td>Trasformare in testo quello che hai detto, usando il riconoscimento vocale del sistema operativo (vedi il punto 5).</td></tr>
+          <tr><td>Riconoscimento vocale</td><td>Trasformare in testo quello che hai detto, usando il riconoscimento vocale del sistema operativo (vedi il punto 4).</td></tr>
           <tr><td>Fotocamera</td><td>Fotografare uno scontrino, una bolletta o una fattura per leggerne il totale.</td></tr>
           <tr><td>Libreria foto</td><td>Scegliere un documento già presente nel rullino, al posto di scattarlo ora.</td></tr>
           <tr><td>Face ID / impronta</td><td>Sbloccare l'app, solo se attivi la protezione dalle impostazioni. L'impronta o il volto non sono mai visibili all'app: il confronto lo fa il sistema.</td></tr>
@@ -185,40 +181,40 @@ footer ul { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; f
       </table>
     </div>
 
-    <h2>5. Dettatura e lettura degli scontrini</h2>
+    <h2>4. Dettatura e lettura degli scontrini</h2>
     <p><strong>La voce.</strong> La trascrizione la fa il riconoscimento vocale del sistema operativo, e Nuvo chiede sempre la modalità <em>sul dispositivo</em>: quando il modello della tua lingua è installato sul telefono, l'audio non esce dal dispositivo. Se quel modello non è disponibile, il riconoscimento di sistema può ripiegare sull'elaborazione sui server di Apple o Google, secondo le impostazioni e le informative del produttore del telefono (<a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple</a>, <a href="https://policies.google.com/privacy" rel="noopener">Google</a>). In quel caso Nuvo riceve solo il testo trascritto: la registrazione non viene conservata né dall'app né dal titolare. Se preferisci evitarlo del tutto, scarica il modello della tua lingua dalle impostazioni del telefono oppure usa la foto o l'inserimento a mano.</p>
     <p><strong>Le foto.</strong> Il testo dei documenti viene letto dal riconoscimento testo di sistema (Vision su iPhone, ML Kit su Android), che lavora <strong>sul dispositivo</strong>, anche in aereo. Le immagini restano nell'area riservata all'app, legate alla spesa, e vengono eliminate quando elimini la spesa o l'app.</p>
     <p>A dare un senso alle parole (importo, esercente, categoria, data, ricorrenza) ci pensano regole scritte dentro l'app, che girano offline.</p>
 
-    <h2>6. Le connessioni di rete</h2>
+    <h2>5. Le connessioni di rete</h2>
     <p>Nuvo apre di sua iniziativa una sola connessione: i <strong>tassi di cambio</strong> della Banca Centrale Europea, richiesti al servizio pubblico <a href="https://frankfurter.app" rel="noopener">Frankfurter</a> (<code>api.frankfurter.app</code>), senza chiave e senza account.</p>
     <div class="callout">
       <p>La richiesta contiene solo una data e i codici delle valute che ti interessano. Non contiene i tuoi importi, le tue spese né identificativi del dispositivo. Come in qualsiasi chiamata web, l'indirizzo IP è tecnicamente visibile al fornitore del servizio: è l'unico dato indirettamente riferibile a te che lascia il telefono, e serve solo a consegnare la risposta.</p>
     </div>
     <p>Se usi una sola valuta e non cambi la valuta di base, l'app funziona senza mai aprire una connessione.</p>
 
-    <h2>7. Mance e acquisti in-app</h2>
+    <h2>6. Mance e acquisti in-app</h2>
     <p>Nuvo è gratuita e non ha funzioni a pagamento. Dalle impostazioni puoi lasciare una <strong>mancia una tantum</strong>: il pagamento è gestito interamente da App Store o Google Play, che ti addebitano con i dati già presenti sul tuo account. Chi sviluppa l'app <strong>non vede</strong> né riceve numeri di carta, indirizzi o altri dati di pagamento: dagli store arrivano solo rendiconti aggregati delle vendite. Le mance sono acquisti consumabili: non sbloccano nulla e non si trasferiscono ad altri dispositivi.</p>
 
-    <h2>8. Backup, export e versioni di prova</h2>
+    <h2>7. Backup, export e versioni di prova</h2>
     <p><strong>Backup ed export.</strong> Dalle impostazioni puoi creare un file di backup (spese, foto e impostazioni) o esportare le spese in CSV. Il file esce dall'app solo dove lo mandi tu: se lo salvi su iCloud, Google Drive o lo mandi per email, da quel momento vale l'informativa del servizio che hai scelto. Il file non è cifrato: conservalo dove conservi i documenti che ti riguardano.</p>
     <p><strong>Versioni di prova su TestFlight.</strong> Se in futuro provi una versione di Nuvo come tester, l'iscrizione e l'invio dei feedback passano da Apple: Apple tratta il tuo indirizzo email, gli screenshot e i commenti che invii, oltre ai dati diagnostici previsti dalle sue impostazioni, e li rende visibili allo sviluppatore. Vale l'<a href="https://www.apple.com/legal/privacy/data/it/testflight/" rel="noopener">informativa TestFlight di Apple</a>. Se mi scrivi un feedback via email, vale il punto seguente.</p>
 
-    <h2>9. Se mi scrivi</h2>
+    <h2>8. Se mi scrivi</h2>
     <p>Quando scrivi a <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>, il titolare tratta l'indirizzo email e il contenuto del messaggio (compresi eventuali screenshot che allegi) al solo scopo di risponderti e correggere il problema segnalato. La base giuridica è l'interesse legittimo a fornire assistenza su un'app gratuita, ai sensi dell'art. 6.1.f del Regolamento (UE) 2016/679. I messaggi vengono conservati per il tempo necessario a gestire la richiesta e comunque non oltre 24 mesi; la casella è ospitata su Gmail (Google Ireland Ltd.), che agisce come fornitore del servizio di posta.</p>
     <p>Non uso i tuoi contatti per newsletter o comunicazioni commerciali.</p>
 
-    <h2>10. I tuoi diritti</h2>
+    <h2>9. I tuoi diritti</h2>
     <p>Sui dati che stanno nel telefono i comandi li hai già in mano, senza dover chiedere niente a nessuno: puoi modificare o eliminare ogni singola spesa, esportare tutto in CSV o in un file di backup (è il diritto di portabilità, in pratica) e cancellare l'intero archivio disinstallando l'app. Nessuno conserva una copia dopo di te.</p>
-    <p>Per i dati del punto 9 (le email che mi mandi) puoi esercitare i diritti previsti dagli articoli 15-22 del GDPR (accesso, rettifica, cancellazione, limitazione, opposizione, portabilità) scrivendo allo stesso indirizzo. Hai inoltre diritto di proporre reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+    <p>Per i dati del punto 8 (le email che mi mandi) puoi esercitare i diritti previsti dagli articoli 15-22 del GDPR (accesso, rettifica, cancellazione, limitazione, opposizione, portabilità) scrivendo allo stesso indirizzo. Hai inoltre diritto di proporre reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
 
-    <h2>11. Minori</h2>
+    <h2>10. Minori</h2>
     <p>Nuvo non è pensata per essere usata da bambini e non raccoglie dati da nessuno, quindi non tratta dati di minori. Se un minore usa l'app sul proprio dispositivo, i dati inseriti restano su quel dispositivo sotto il controllo di chi ne ha la responsabilità.</p>
 
-    <h2>12. Modifiche a questa informativa</h2>
+    <h2>11. Modifiche a questa informativa</h2>
     <p>Se una versione futura dell'app introdurrà funzioni che cambiano il quadro descritto qui, per esempio una sincronizzazione fra dispositivi, questa pagina verrà aggiornata prima del rilascio, con la nuova data in alto, e la novità sarà spiegata dentro l'app. Nessuna funzione che invii i tuoi dati altrove verrà attivata senza dirtelo.</p>
 
-    <h2>13. Contatti</h2>
+    <h2>12. Contatti</h2>
     <p>Per qualsiasi domanda su questa informativa: <a href="mailto:nuvo.app.it@gmail.com">nuvo.app.it@gmail.com</a>.</p>
 
   </div>
