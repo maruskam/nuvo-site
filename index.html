@@ -244,6 +244,15 @@ nav a:hover { color: var(--violet); }
 .costs h2 .q { display: block; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; }
 .costs h2 .a { display: block; margin-top: 6px; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; color: var(--peach); }
 
+/* manuale */
+.manual { margin-top: 30px; display: grid; gap: 22px 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.manual h3 { font-size: 16.5px; display: flex; align-items: center; gap: 10px; }
+.manual h3 .num { width: 26px; height: 26px; border-radius: 50%; background: var(--violet-soft); color: var(--violet); display: grid; place-items: center; font: 800 12px Nunito, sans-serif; flex: none; }
+.manual p, .manual li { font-size: 13.5px; line-height: 1.55; color: var(--ink-72); }
+.manual p { margin-top: 8px; }
+.manual ol { margin: 8px 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.manual b { color: var(--ink); font-weight: 800; }
+
 /* domande */
 .faq { margin-top: 30px; display: grid; gap: 18px 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
 .faq h3 { font-size: 16.5px; }
@@ -280,6 +289,7 @@ footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="supporto.html">Assistenza</a></li>
         <li><a href="#costi">Quanto costa</a></li>
+        <li><a href="#manuale">Manuale</a></li>
         <li><a href="#domande">Domande</a></li>
       </ul>
     </nav>
@@ -540,6 +550,68 @@ footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
   </div>
 </section>
 
+<section class="panel" id="manuale">
+  <div class="wrap">
+    <p class="eyebrow">Manuale utente</p>
+    <h2>Come si usa Nuvo.</h2>
+    <div class="manual">
+      <div>
+        <h3><span class="num">1</span>La prima apertura</h3>
+        <p>Nuvo ti chiede come ti chiami e quanto ti entra ogni mese: è il <b>credito</b> da cui scala ogni spesa. Poi un breve tutorial mostra i tre modi per registrare. Niente account, niente registrazione: si parte subito.</p>
+      </div>
+      <div>
+        <h3><span class="num">2</span>La barra in basso</h3>
+        <p>Al centro i tre modi per registrare una spesa, tutti alla pari: <b>Scrivi</b>, <b>Detta</b>, <b>Foto</b>. Ai lati <b>Home</b> e <b>Analisi</b>. In alto a destra nella Home: la tazzina per le mance, la «i» di «Come funziona Nuvo» e il tuo profilo.</p>
+      </div>
+      <div>
+        <h3><span class="num">3</span>Dettare una spesa</h3>
+        <ol>
+          <li>Tocca <b>Detta</b> e di' cosa e quanto: «spesa ventidue euro», «farmacia 18 e 50».</li>
+          <li>Puoi aggiungere la data («ieri», «sabato scorso», «il 3 agosto»), la ricorrenza («Netflix 12,90 al mese») o la valuta («ottanta franchi»).</li>
+          <li>Tocca <b>Ho finito</b>: Nuvo ti mostra la spesa compilata, tu controlli e salvi.</li>
+        </ol>
+        <p>Una spesa alla volta. Se Nuvo sbaglia la categoria, correggila nella conferma: la volta dopo se ne ricorda.</p>
+      </div>
+      <div>
+        <h3><span class="num">4</span>Fotografare uno scontrino</h3>
+        <ol>
+          <li>Tocca <b>Foto</b>, poi scatta o scegli un'immagine dalla galleria.</li>
+          <li>Nuvo legge il documento sul telefono e trova il totale, anche su bollette e fatture.</li>
+          <li>Controlla la scheda compilata e salva. La foto resta allegata alla spesa.</li>
+        </ol>
+      </div>
+      <div>
+        <h3><span class="num">5</span>Scrivere una spesa</h3>
+        <p>Tocca <b>Scrivi</b>: inserisci cosa e quanto, scegli la valuta se diversa dalla tua, la data e la categoria dalla griglia di icone. L'interruttore <b>Spesa ricorrente</b> la ripete ogni mese (o ogni 2, 3, 6, 12). È la stessa scheda che compare dopo la dettatura e la foto.</p>
+      </div>
+      <div>
+        <h3><span class="num">6</span>Il credito del mese</h3>
+        <p>Tocca la card del credito nella Home per vedere le <b>entrate</b> del mese e aggiungerne con <b>+ Entrata</b>: stipendio, rimborsi, extra. Un'entrata ricorrente torna da sola ogni mese. L'anello mostra quanto resta, e Nuvo cambia umore quando il residuo si assottiglia.</p>
+      </div>
+      <div>
+        <h3><span class="num">7</span>Categorie e tetti</h3>
+        <p>Da <b>Budget</b> vedi tutte le categorie. Tocca una categoria per aprirne la scheda: le spese del mese e il tetto, che puoi impostare o modificare. <b>Nuova categoria</b> ti fa scegliere nome, colore, icona, parole che la richiamano e tetto. Scorri una card a sinistra per <b>archiviarla</b>: le sue spese restano nei conti, e la ritrovi in fondo sotto «Archiviate».</p>
+      </div>
+      <div>
+        <h3><span class="num">8</span>Rivedere e correggere</h3>
+        <p>In <b>Ultime spese</b> e in <b>Tutte le spese</b> tocchi una riga per modificarla o eliminarla. Puoi cambiare mese, e filtrare per <b>Ricorrenti</b> o per <b>Categoria</b>. Le ricorrenti si gestiscono dalla loro sezione: si mettono in pausa con l'interruttore o si modificano toccandole.</p>
+      </div>
+      <div>
+        <h3><span class="num">9</span>Analisi e risparmi</h3>
+        <p>In <b>Analisi</b> scegli il mese e vedi credito, speso, residuo, l'andamento giorno per giorno e le categorie a confronto con i tetti. <b>I risparmi</b>, nella Home, sommano quello che è avanzato dai mesi chiusi: i mesi in positivo aggiungono, quelli sforati tolgono.</p>
+      </div>
+      <div>
+        <h3><span class="num">10</span>Profilo e impostazioni</h3>
+        <p>Dal profilo cambi <b>lingua</b>, <b>valuta</b> e nome, attivi i <b>promemoria</b> e il blocco con <b>Face ID o impronta</b>. Sotto <b>Backup</b>: salva un backup da portare su un altro telefono, esporta spese ed entrate in CSV, ripristina da un backup. <b>Parti da zero</b> cancella tutto.</p>
+      </div>
+      <div>
+        <h3><span class="num">11</span>Se qualcosa non torna</h3>
+        <p>Nel profilo, sotto <b>Aiuto</b>, trovi questo sito e <b>Scrivi all'assistenza</b>: si apre la Posta con una mail già compilata con modello, sistema e versione di Nuvo. Aggiungi cosa è successo e invia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="domande">
   <div class="wrap">
     <h2>Domande</h2>
@@ -612,6 +684,7 @@ footer ul { display: flex; gap: 22px; flex-wrap: wrap; }
       <ul>
         <li><a href="supporto.html">Assistenza</a></li>
         <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#manuale">Manuale</a></li>
         <li><a href="#domande">Domande</a></li>
         <li><a href="#costi">Sostieni l'app</a></li>
         <li><a href="mailto:nuvo.app.it@gmail.com">Scrivimi</a></li>
